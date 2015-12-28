@@ -1,3 +1,4 @@
-# Ignore supporting files
+# Ignore the folder named "Supporting Files"
 Supporting\ Files/
+# Ignore all files within this folder
 "Supporting Files"/*
