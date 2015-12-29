@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var numberOfRemainingPods: UILabel!
     
+    let model = Model()
+    
     @IBAction func addSleeve(sender: UIButton)
     {
         if let num = Int(numberOfRemainingPods.text!) { // Check label.text can be converted to Int
@@ -30,8 +32,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    
     
     
     

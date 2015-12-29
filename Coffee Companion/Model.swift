@@ -36,12 +36,14 @@ struct Coffee { // Defines the attributes a coffee must have
     }
 }
 
-
 // Initialise types of coffee
 var cosi = Coffee(name: "Cosi", intensity: 4, size: "Espresso (40ml)", aroma: "Fruity", notes: "Lightly toasted cereal and fruity notes", quantity: 10, podColour: "Brown")
 var roma = Coffee(name: "Roma", intensity: 8, size: "Espresso (40ml)", aroma: "Intense", notes: "Sweet, woody notes and a full, lasting taste", quantity: 10, podColour: "Dark Brown")
 
-
+class Model
+{
+    let array = coffees // Copy array of coffee types
+}
 
 
 
