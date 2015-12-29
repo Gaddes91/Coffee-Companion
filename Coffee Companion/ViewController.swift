@@ -9,7 +9,33 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var numberOfRemainingPods: UILabel!
+    
+    @IBAction func addSleeve(sender: UIButton)
+    {
+        if let num = Int(numberOfRemainingPods.text!) { // Check label.text can be converted to Int
+            
+            numberOfRemainingPods.text = String(num + 10)
+        }
+    }
+    
+    @IBAction func removePod(sender: UIButton)
+    {
+        if let num = Int(numberOfRemainingPods.text!) { // Check label.text can be converted to Int
+            
+            if num > 0 {
+                numberOfRemainingPods.text = String(num - 1)
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,6 +45,10 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
 
 
 }

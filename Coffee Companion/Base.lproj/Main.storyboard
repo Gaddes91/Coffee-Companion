@@ -18,38 +18,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kg-l3-6q2">
-                                <rect key="frame" x="226" y="160" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGF-Dj-J72">
+                                <rect key="frame" x="291.5" y="289.5" width="17.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGF-Dj-J72">
-                                <rect key="frame" x="249" y="250" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51v-hs-pjo">
-                                <rect key="frame" x="319" y="541" width="124" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Remove Pod"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1mj-dW-hNV">
-                                <rect key="frame" x="20" y="541" width="132" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1mj-dW-hNV">
+                                <rect key="frame" x="20" y="544" width="102" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Add Sleeve"/>
+                                <connections>
+                                    <action selector="addSleeve:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xVX-p8-uQ2"/>
+                                </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51v-hs-pjo">
+                                <rect key="frame" x="447" y="544" width="113" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Remove Pod"/>
+                                <connections>
+                                    <action selector="removePod:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Exq-hp-iQ3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kg-l3-6q2">
+                                <rect key="frame" x="279" y="79" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="51v-hs-pjo" secondAttribute="trailing" constant="137" id="Ev5-X0-4Zp"/>
+                            <constraint firstItem="5kg-l3-6q2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="59" id="D6g-8J-ZHI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="51v-hs-pjo" secondAttribute="trailing" constant="20" id="Ev5-X0-4Zp"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1mj-dW-hNV" secondAttribute="bottom" constant="20" id="RvY-It-g2P"/>
+                            <constraint firstItem="FGF-Dj-J72" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cZt-ZJ-1H5"/>
+                            <constraint firstItem="5kg-l3-6q2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dXY-hF-b8g"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="51v-hs-pjo" secondAttribute="bottom" constant="20" id="daO-vw-nh8"/>
                             <constraint firstAttribute="leadingMargin" secondItem="1mj-dW-hNV" secondAttribute="leading" id="hFv-g5-hu8"/>
+                            <constraint firstItem="FGF-Dj-J72" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rc8-G6-uJy"/>
                             <constraint firstItem="51v-hs-pjo" firstAttribute="leading" secondItem="1mj-dW-hNV" secondAttribute="trailing" constant="167" id="wOb-Vi-rCV"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="wOb-Vi-rCV"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="infoLabel" destination="5kg-l3-6q2" id="sUe-Lo-lkE"/>
+                        <outlet property="numberOfRemainingPods" destination="FGF-Dj-J72" id="d0J-Rf-Mhy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

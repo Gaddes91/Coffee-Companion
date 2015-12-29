@@ -14,6 +14,7 @@
 		4BB132C51C314A8A0040C5B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BB132C31C314A8A0040C5B6 /* LaunchScreen.storyboard */; };
 		4BB132D01C314A8B0040C5B6 /* Coffee_CompanionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB132CF1C314A8B0040C5B6 /* Coffee_CompanionTests.swift */; };
 		4BB132DB1C314A8B0040C5B6 /* Coffee_CompanionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB132DA1C314A8B0040C5B6 /* Coffee_CompanionUITests.swift */; };
+		4BB132E91C32D1BC0040C5B6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB132E81C32D1BC0040C5B6 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		4BB132D61C314A8B0040C5B6 /* Coffee CompanionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Coffee CompanionUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BB132DA1C314A8B0040C5B6 /* Coffee_CompanionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee_CompanionUITests.swift; sourceTree = "<group>"; };
 		4BB132DC1C314A8B0040C5B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BB132E81C32D1BC0040C5B6 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				4BB132BA1C314A8A0040C5B6 /* AppDelegate.swift */,
+				4BB132E81C32D1BC0040C5B6 /* Model.swift */,
 				4BB132BC1C314A8A0040C5B6 /* ViewController.swift */,
 				4BB132BE1C314A8A0040C5B6 /* Main.storyboard */,
 				4BB132C11C314A8A0040C5B6 /* Assets.xcassets */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BB132E91C32D1BC0040C5B6 /* Model.swift in Sources */,
 				4BB132BD1C314A8A0040C5B6 /* ViewController.swift in Sources */,
 				4BB132BB1C314A8A0040C5B6 /* AppDelegate.swift in Sources */,
 			);
