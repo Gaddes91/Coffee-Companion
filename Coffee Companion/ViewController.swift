@@ -13,25 +13,28 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var numberOfRemainingPods: UILabel!
     
+    // MARK: the below value may have to be changed to ensure currentPage remains the same when user closes and re-opens the app
+    var currentPage: Int = 0 // When app is first run, "currentPage" will be 0. This matches the value of "page", as calculated in func loadVisiblePages()
+    
     let model = Model()
     
-    // TODO: this should update the value within the model itself (not just the label.text)!
     @IBAction func addSleeve(sender: UIButton)
     {
-        if let num = Int(numberOfRemainingPods.text!) { // Check label.text can be converted to Int
-            
-            numberOfRemainingPods.text = String(num + 10)
-        }
+        // Update value within model itself (not just the label.text)
+        model.coffeeDetails[currentPage].quantity = model.coffeeDetails[currentPage].quantity + 10
+        // Update label to show current value
+        updateNumberOfRemainingPods()
     }
     
-    // TODO: this should update the value within the model itself (not just the label.text)!
     @IBAction func removePod(sender: UIButton)
     {
-        if let num = Int(numberOfRemainingPods.text!) { // Check label.text can be converted to Int
-            
-            if num > 0 {
-                numberOfRemainingPods.text = String(num - 1)
-            }
+        let num = model.coffeeDetails[currentPage].quantity
+        
+        if num > 0 {
+            // Update value within model itself (not just the label.text)
+            model.coffeeDetails[currentPage].quantity = num - 1
+            // Update label to show current value
+            updateNumberOfRemainingPods()
         }
     }
     
@@ -52,8 +55,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             pageImages.append(value.icon)
         }
         
-        // The numberOfRemainingPods shown when the view first loads should relate to the first image in the array
-        numberOfRemainingPods.text = "\(model.coffeeDetails[0].quantity)"
+        // The numberOfRemainingPods shown when the view first loads should relate to the current page.
+        // TODO: currentPage should stay the same when user closes and re-opens the app.
+        numberOfRemainingPods.text = "\(model.coffeeDetails[currentPage].quantity)"
         
         let pageCount = pageImages.count
         
@@ -82,7 +86,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         }
         
         // 1
-        if let pageView = pageViews[page] {
+        if let _ = pageViews[page] {
             // Do nothing. The view is already loaded.
         } else {
             // 2
@@ -121,13 +125,15 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         let pageWidth = scrollView.frame.size.width
         let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
         
+        // Assign current page number to global variable
+        currentPage = page
+        
         // Update the page control
         pageControl.currentPage = page
         
         // Work out which pages you want to load
         let firstPage = page - 1
         let lastPage = page + 1
-        
         
         // Purge anything before the first page
         for var index = 0; index < firstPage; ++index {
@@ -144,8 +150,12 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             purgePage(index)
         }
         
-        // TODO: keep numberOfRemainingPods in sync with current coffee
-        numberOfRemainingPods.text = "\(model.coffeeDetails[page].quantity)"
+        updateNumberOfRemainingPods()
+    }
+    
+    // For each coffee type, keep the associated label.text in sync with current number of coffee pods
+    func updateNumberOfRemainingPods() {
+        numberOfRemainingPods.text = "\(model.coffeeDetails[currentPage].quantity)"
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
