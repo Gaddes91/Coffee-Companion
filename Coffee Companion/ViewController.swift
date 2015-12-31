@@ -10,10 +10,14 @@ import UIKit
 
 class ViewController: UIViewController, UIScrollViewDelegate {
     
-    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var intensityLabel: UILabel!
+    @IBOutlet weak var sizeLabel: UILabel!
+    @IBOutlet weak var aromaLabel: UILabel!
+    @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var numberOfRemainingPods: UILabel!
     
-    // MARK: the below value may have to be changed to ensure currentPage remains the same when user closes and re-opens the app
+    // MARK: The below value may have to be changed to ensure currentPage remains the same when user closes and re-opens the app
     var currentPage: Int = 0 // When app is first run, "currentPage" will be 0. This matches the value of "page", as calculated in func loadVisiblePages()
     
     let model = Model()
@@ -151,11 +155,20 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         }
         
         updateNumberOfRemainingPods()
+        updateInfoLabels()
     }
     
     // For each coffee type, keep the associated label.text in sync with current number of coffee pods
     func updateNumberOfRemainingPods() {
         numberOfRemainingPods.text = "\(model.coffeeDetails[currentPage].quantity)"
+    }
+    
+    func updateInfoLabels() {
+        nameLabel.text = "Name: \(model.coffeeDetails[currentPage].name)"
+        intensityLabel.text = "Intensity: \(model.coffeeDetails[currentPage].intensity)"
+        sizeLabel.text = "Size: \(model.coffeeDetails[currentPage].size)"
+        aromaLabel.text = "Aroma: \(model.coffeeDetails[currentPage].aroma)"
+        notesLabel.text = "Notes: \(model.coffeeDetails[currentPage].notes)"
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
