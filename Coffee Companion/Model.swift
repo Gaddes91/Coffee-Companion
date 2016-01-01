@@ -19,17 +19,17 @@ struct Coffee { // Defines the attributes a coffee must have
     var aroma: String
     var notes: String
     var quantity: Int
-    var podColour: String // Should this be UIColor?
+//    var podColour: String // Should this be UIColor?
     var icon: UIImage
     
-    init (name: String, intensity: Int, size: String, aroma: String, notes: String, quantity: Int, podColour: String, icon: UIImage) {
+    init (name: String, intensity: Int, size: String, aroma: String, notes: String, quantity: Int, icon: UIImage) {
         self.name = name
         self.intensity = intensity
         self.size = size
         self.aroma = aroma
         self.notes = notes
         self.quantity = quantity
-        self.podColour = podColour
+//        self.podColour = podColour
         self.icon = icon
         
         // Populate array with coffee types
@@ -51,11 +51,40 @@ class Model
         // TODO: quantity for all coffees should be 0 when app first loads
         
         // Initialise types of coffee
-        dictionary["Cosi"] = Coffee(name: "Cosi", intensity: 4, size: "Espresso (40ml)", aroma: "Fruity", notes: "Lightly toasted cereal and fruity notes", quantity: 10, podColour: "Brown", icon: UIImage(named:"Cosi.png")!)
-        dictionary["Roma"] = Coffee(name: "Roma", intensity: 8, size: "Espresso (40ml)", aroma: "Intense", notes: "Sweet, woody notes and a full, lasting taste", quantity: 8, podColour: "Dark Brown", icon: UIImage(named:"Roma.png")!)
-        dictionary["Arpeggio"] = Coffee(name: "Arpeggio", intensity: 9, size: "Espresso (40ml)", aroma: "Intense", notes: "Strong character and intense body, enhanced by cocoa notes", quantity: 15, podColour: "Purple", icon: UIImage(named:"Arpeggio.png")!)
-        dictionary["Ristretto"] = Coffee(name: "Ristretto", intensity: 10, size: "Espresso (40ml)", aroma: "Intense", notes: "Full-bodied, intense espresso with a subtle, fruity note", quantity: 13, podColour: "Black", icon: UIImage(named:"Ristretto.png")!)
-        dictionary["Volluto"] = Coffee(name: "Volluto", intensity: 4, size: "Espresso (40ml)", aroma: "Balanced", notes: "Sweet and biscuity flavours", quantity: 7, podColour: "Yellow", icon: UIImage(named:"Volluto.png")!)
+        // Intenso
+        dictionary["Arpeggio"] = Coffee(name: "Arpeggio", intensity: 9, size: "Espresso (40ml)", aroma: "Intense", notes: "Strong character and intense body, enhanced by cocoa notes", quantity: 15, icon: UIImage(named:"Arpeggio.png")!)
+        dictionary["Dharkan"] = Coffee(name: "Dharkan", intensity: 11, size: "Espresso (40ml)", aroma: "Intense", notes: "Hints of bitter cocoa powder and toasted cereals expressed through a silky and velvety texture", quantity: 7, icon: UIImage(named:"Dharkan.png")!)
+        dictionary["Kazaar"] = Coffee(name: "Kazaar", intensity: 12, size: "Espresso (40ml)", aroma: "Intense", notes: "Powerful bitterness and notes of pepper, balanced by a full and creamy texture", quantity: 7, icon: UIImage(named:"Kazaar.png")!)
+        dictionary["Ristretto"] = Coffee(name: "Ristretto", intensity: 10, size: "Espresso (40ml)", aroma: "Intense", notes: "Full-bodied, intense espresso with a subtle, fruity note", quantity: 13, icon: UIImage(named:"Ristretto.png")!)
+        dictionary["Roma"] = Coffee(name: "Roma", intensity: 8, size: "Espresso (40ml)", aroma: "Intense", notes: "Sweet, woody notes and a full, lasting taste", quantity: 8, icon: UIImage(named:"Roma.png")!)
+        
+        // Espresso
+        dictionary["Capriccio"] = Coffee(name: "Capriccio", intensity: 5, size: "Espresso (40ml)", aroma: "Balanced", notes: "Rich aroma and a strong typical cereal note", quantity: 10, icon: UIImage(named:"Capriccio.png")!)
+        dictionary["Cosi"] = Coffee(name: "Cosi", intensity: 4, size: "Espresso (40ml)", aroma: "Fruity", notes: "Lightly toasted cereal and fruity notes", quantity: 10, icon: UIImage(named:"Cosi.png")!)
+        dictionary["Livanto"] = Coffee(name: "Livanto", intensity: 6, size: "Espresso (40ml)", aroma: "Balanced", notes: "A well-balanced espresso characterised by a roasted caramalised note", quantity: 10, icon: UIImage(named:"Livanto.png")!)
+        dictionary["Volluto"] = Coffee(name: "Volluto", intensity: 4, size: "Espresso (40ml)", aroma: "Balanced", notes: "Sweet and biscuity flavours", quantity: 7, icon: UIImage(named:"Volluto.png")!)
+        
+        // Pure Origin
+        dictionary["Indriya from India"] = Coffee(name: "Indriya from India", intensity: 10, size: "Espresso (40ml)", aroma: "Intense", notes: "A full-bodied espresso, which has a distinct personality with notes of spices", quantity: 10, icon: UIImage(named:"Indriya from India.png")!)
+        dictionary["Rosabaya de Colombia"] = Coffee(name: "Rosabaya de Colombia", intensity: 6, size: "Espresso (40ml)", aroma: "Fruity", notes: "This coffee has a subtle acidity with typical red fruit and winey notes", quantity: 9, icon: UIImage(named:"Rosabaya de Colombia.png")!)
+        dictionary["Dulsao do Brasil"] = Coffee(name: "Dulsao do Brasil", intensity: 4, size: "Espresso (40ml)", aroma: "Balanced", notes: "The satiny smooth, elegantly balanced flavor is enhanced with a note of delicately toasted grain", quantity: 8, icon: UIImage(named:"Dulsao do Brasil.png")!)
+        dictionary["Bukeela ka Ethiopia"] = Coffee(name: "Bukeela ka Ethiopia", intensity: 3, size: "Lungo (110ml)", aroma: "Balanced", notes: "This delicately fresh and floral Pure Origin Lungo reveals unexpectedly wild notes of musk and wood", quantity: 10, icon: UIImage(named:"Bukeela ka Ethiopia.png")!)
+        
+        // Lungo
+        dictionary["Fortissio Lungo"] = Coffee(name: "Fortissio Lungo", intensity: 8, size: "Lungo (110ml)", aroma: "Intense", notes: "West Indian Malabar Arabica beans are exposed to monsoon winds after harvest to reveal a distinguished aromatic profile, rich with cereal notes", quantity: 8, icon: UIImage(named:"Fortissio Lungo.png")!)
+        dictionary["Vivalto Lungo"] = Coffee(name: "Vivalto Lungo", intensity: 4, size: "Lungo (110ml)", aroma: "Fruity", notes: "Separately roasted South American and East African Arabicas, combining roasted and subtle floral notes", quantity: 10, icon: UIImage(named:"Vivalto Lungo.png")!)
+        dictionary["Linizio Lungo"] = Coffee(name: "Linizio Lungo", intensity: 4, size: "Lungo (110ml)", aroma: "Balanced", notes: "Split-roasting gives a cereal, malty note typical for the Bourbon variety, while maintaining its mild and smooth character", quantity: 15, icon: UIImage(named:"Linizio Lungo.png")!)
+        
+        // Decaffeinato
+        dictionary["Decaffeinato Arpeggio"] = Coffee(name: "Decaffeinato Arpeggio", intensity: 9, size: "Espresso (40ml)", aroma: "Intense", notes: "This coffee boasts strong character, intense body and cocoa notes", quantity: 10, icon: UIImage(named:"Decaffeinato Arpeggio.png")!)
+        dictionary["Decaffeinato Volluto"] = Coffee(name: "Decaffeinato Volluto", intensity: 4, size: "Espresso (40ml)", aroma: "Fruity", notes: "This coffee reveals sweet and biscuity flavours, reinforced by a hint of acidity and a fruity note", quantity: 10, icon: UIImage(named:"Decaffeinato Volluto.png")!)
+        dictionary["Decaffeinato Vivalto Lungo"] = Coffee(name: "Decaffeinato Vivalto Lungo", intensity: 4, size: "Lungo (110ml)", aroma: "Fruity", notes: "This coffee perfectly preserves the complexity of separately roasted South American and East African Arabicas, combining both roasted and subtle floral notes", quantity: 10, icon: UIImage(named:"Decaffeinato Vivalto Lungo.png")!)
+        dictionary["Decaffeinato Intenso"] = Coffee(name: "Decaffeinato Intenso", intensity: 7, size: "Espresso (40ml)", aroma: "Intense", notes: "A full-bodied espresso with subtle cocoa and roasted cereal notes", quantity: 10, icon: UIImage(named:"Decaffeinato Intenso.png")!)
+        
+        // Variations
+        dictionary["Ciocattino"] = Coffee(name: "Ciocattino", intensity: 6, size: "Espresso (40ml)", aroma: "Chocolate", notes: "Dark and bitter chocolate notes meet the caramelised roast of the Livanto Grand Cru. A rich combination reminiscent of a square of dark chocolate", quantity: 9, icon: UIImage(named:"Ciocattino.png")!)
+        dictionary["Vanilio"] = Coffee(name: "Vanilio", intensity: 6, size: "Espresso (40ml)", aroma: "Vanilla", notes: "A balanced harmony between the rich and the velvety aromas of vanilla and the mellow flavour of the Livanto Grand Cru. A blend distinguished by its full flavour, infinitely smooth and silky on the palate", quantity: 10, icon: UIImage(named:"Vanilio.png")!)
+        dictionary["Caramelito"] = Coffee(name: "Caramelito", intensity: 6, size: "Espresso (40ml)", aroma: "Caramel", notes: "The sweet flavour of caramel softens the roasted notes of the Livanto Grand Cru. This delicate gourmet marriage evokes the creaminess of soft toffee", quantity: 8, icon: UIImage(named:"Caramelito.png")!)
     
         // Populate 2No. arrays
         // One will hold the name of each coffee, in order
