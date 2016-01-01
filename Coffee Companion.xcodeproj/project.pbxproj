@@ -15,11 +15,29 @@
 		4BB132D01C314A8B0040C5B6 /* Coffee_CompanionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB132CF1C314A8B0040C5B6 /* Coffee_CompanionTests.swift */; };
 		4BB132DB1C314A8B0040C5B6 /* Coffee_CompanionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB132DA1C314A8B0040C5B6 /* Coffee_CompanionUITests.swift */; };
 		4BB132E91C32D1BC0040C5B6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB132E81C32D1BC0040C5B6 /* Model.swift */; };
-		4BB133141C3355080040C5B6 /* Arpeggio.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BB1330F1C3355080040C5B6 /* Arpeggio.png */; };
-		4BB133151C3355080040C5B6 /* Ristretto.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BB133101C3355080040C5B6 /* Ristretto.png */; };
-		4BB133161C3355080040C5B6 /* Roma.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BB133111C3355080040C5B6 /* Roma.png */; };
-		4BB133171C3355080040C5B6 /* Cosi.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BB133121C3355080040C5B6 /* Cosi.png */; };
-		4BB133181C3355080040C5B6 /* Volluto.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BB133131C3355080040C5B6 /* Volluto.png */; };
+		4BE0735F1C36F78C00CFDCC9 /* Arpeggio.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0735A1C36F78C00CFDCC9 /* Arpeggio.png */; };
+		4BE073601C36F78C00CFDCC9 /* Dharkan.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0735B1C36F78C00CFDCC9 /* Dharkan.png */; };
+		4BE073611C36F78C00CFDCC9 /* Kazaar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0735C1C36F78C00CFDCC9 /* Kazaar.png */; };
+		4BE073621C36F78C00CFDCC9 /* Ristretto.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0735D1C36F78C00CFDCC9 /* Ristretto.png */; };
+		4BE073631C36F78C00CFDCC9 /* Roma.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0735E1C36F78C00CFDCC9 /* Roma.png */; };
+		4BE073681C36F7A500CFDCC9 /* Capriccio.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE073641C36F7A500CFDCC9 /* Capriccio.png */; };
+		4BE073691C36F7A500CFDCC9 /* Cosi.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE073651C36F7A500CFDCC9 /* Cosi.png */; };
+		4BE0736A1C36F7A500CFDCC9 /* Livanto.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE073661C36F7A500CFDCC9 /* Livanto.png */; };
+		4BE0736B1C36F7A500CFDCC9 /* Volluto.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE073671C36F7A500CFDCC9 /* Volluto.png */; };
+		4BE073701C36F7B400CFDCC9 /* Bukeela ka Ethiopia.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0736C1C36F7B400CFDCC9 /* Bukeela ka Ethiopia.png */; };
+		4BE073711C36F7B400CFDCC9 /* Dulsao do Brasil.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0736D1C36F7B400CFDCC9 /* Dulsao do Brasil.png */; };
+		4BE073721C36F7B400CFDCC9 /* Indriya from India.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0736E1C36F7B400CFDCC9 /* Indriya from India.png */; };
+		4BE073731C36F7B400CFDCC9 /* Rosabaya de Colombia.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0736F1C36F7B400CFDCC9 /* Rosabaya de Colombia.png */; };
+		4BE073771C36F7BE00CFDCC9 /* Fortissio Lungo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE073741C36F7BE00CFDCC9 /* Fortissio Lungo.png */; };
+		4BE073781C36F7BE00CFDCC9 /* Linizio Lungo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE073751C36F7BE00CFDCC9 /* Linizio Lungo.png */; };
+		4BE073791C36F7BE00CFDCC9 /* Vivalto Lungo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE073761C36F7BE00CFDCC9 /* Vivalto Lungo.png */; };
+		4BE0737E1C36F7C800CFDCC9 /* Decaffeinato Arpeggio.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0737A1C36F7C800CFDCC9 /* Decaffeinato Arpeggio.png */; };
+		4BE0737F1C36F7C800CFDCC9 /* Decaffeinato Intenso.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0737B1C36F7C800CFDCC9 /* Decaffeinato Intenso.png */; };
+		4BE073801C36F7C800CFDCC9 /* Decaffeinato Vivalto Lungo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0737C1C36F7C800CFDCC9 /* Decaffeinato Vivalto Lungo.png */; };
+		4BE073811C36F7C800CFDCC9 /* Decaffeinato Volluto.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0737D1C36F7C800CFDCC9 /* Decaffeinato Volluto.png */; };
+		4BE073851C36F7D800CFDCC9 /* Caramelito.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE073821C36F7D800CFDCC9 /* Caramelito.png */; };
+		4BE073861C36F7D800CFDCC9 /* Ciocattino.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE073831C36F7D800CFDCC9 /* Ciocattino.png */; };
+		4BE073871C36F7D800CFDCC9 /* Vanilio.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE073841C36F7D800CFDCC9 /* Vanilio.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,11 +72,29 @@
 		4BB132DA1C314A8B0040C5B6 /* Coffee_CompanionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee_CompanionUITests.swift; sourceTree = "<group>"; };
 		4BB132DC1C314A8B0040C5B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BB132E81C32D1BC0040C5B6 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		4BB1330F1C3355080040C5B6 /* Arpeggio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arpeggio.png; sourceTree = "<group>"; };
-		4BB133101C3355080040C5B6 /* Ristretto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ristretto.png; sourceTree = "<group>"; };
-		4BB133111C3355080040C5B6 /* Roma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roma.png; sourceTree = "<group>"; };
-		4BB133121C3355080040C5B6 /* Cosi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cosi.png; sourceTree = "<group>"; };
-		4BB133131C3355080040C5B6 /* Volluto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Volluto.png; sourceTree = "<group>"; };
+		4BE0735A1C36F78C00CFDCC9 /* Arpeggio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arpeggio.png; sourceTree = "<group>"; };
+		4BE0735B1C36F78C00CFDCC9 /* Dharkan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dharkan.png; sourceTree = "<group>"; };
+		4BE0735C1C36F78C00CFDCC9 /* Kazaar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kazaar.png; sourceTree = "<group>"; };
+		4BE0735D1C36F78C00CFDCC9 /* Ristretto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ristretto.png; sourceTree = "<group>"; };
+		4BE0735E1C36F78C00CFDCC9 /* Roma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roma.png; sourceTree = "<group>"; };
+		4BE073641C36F7A500CFDCC9 /* Capriccio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Capriccio.png; sourceTree = "<group>"; };
+		4BE073651C36F7A500CFDCC9 /* Cosi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cosi.png; sourceTree = "<group>"; };
+		4BE073661C36F7A500CFDCC9 /* Livanto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Livanto.png; sourceTree = "<group>"; };
+		4BE073671C36F7A500CFDCC9 /* Volluto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Volluto.png; sourceTree = "<group>"; };
+		4BE0736C1C36F7B400CFDCC9 /* Bukeela ka Ethiopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bukeela ka Ethiopia.png"; sourceTree = "<group>"; };
+		4BE0736D1C36F7B400CFDCC9 /* Dulsao do Brasil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dulsao do Brasil.png"; sourceTree = "<group>"; };
+		4BE0736E1C36F7B400CFDCC9 /* Indriya from India.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Indriya from India.png"; sourceTree = "<group>"; };
+		4BE0736F1C36F7B400CFDCC9 /* Rosabaya de Colombia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rosabaya de Colombia.png"; sourceTree = "<group>"; };
+		4BE073741C36F7BE00CFDCC9 /* Fortissio Lungo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fortissio Lungo.png"; sourceTree = "<group>"; };
+		4BE073751C36F7BE00CFDCC9 /* Linizio Lungo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Linizio Lungo.png"; sourceTree = "<group>"; };
+		4BE073761C36F7BE00CFDCC9 /* Vivalto Lungo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vivalto Lungo.png"; sourceTree = "<group>"; };
+		4BE0737A1C36F7C800CFDCC9 /* Decaffeinato Arpeggio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Decaffeinato Arpeggio.png"; sourceTree = "<group>"; };
+		4BE0737B1C36F7C800CFDCC9 /* Decaffeinato Intenso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Decaffeinato Intenso.png"; sourceTree = "<group>"; };
+		4BE0737C1C36F7C800CFDCC9 /* Decaffeinato Vivalto Lungo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Decaffeinato Vivalto Lungo.png"; sourceTree = "<group>"; };
+		4BE0737D1C36F7C800CFDCC9 /* Decaffeinato Volluto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Decaffeinato Volluto.png"; sourceTree = "<group>"; };
+		4BE073821C36F7D800CFDCC9 /* Caramelito.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Caramelito.png; sourceTree = "<group>"; };
+		4BE073831C36F7D800CFDCC9 /* Ciocattino.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ciocattino.png; sourceTree = "<group>"; };
+		4BE073841C36F7D800CFDCC9 /* Vanilio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Vanilio.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,13 +178,79 @@
 		4BB132EE1C32F0EC0040C5B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4BB1330F1C3355080040C5B6 /* Arpeggio.png */,
-				4BB133101C3355080040C5B6 /* Ristretto.png */,
-				4BB133111C3355080040C5B6 /* Roma.png */,
-				4BB133121C3355080040C5B6 /* Cosi.png */,
-				4BB133131C3355080040C5B6 /* Volluto.png */,
+				4BE073591C36F72F00CFDCC9 /* Variations */,
+				4BE073581C36F72700CFDCC9 /* Decaffeinato */,
+				4BE073571C36F71F00CFDCC9 /* Lungo */,
+				4BE073561C36F71600CFDCC9 /* Pure Origin */,
+				4BE073551C36F70F00CFDCC9 /* Espresso */,
+				4BE073541C36F6F500CFDCC9 /* Intenso */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4BE073541C36F6F500CFDCC9 /* Intenso */ = {
+			isa = PBXGroup;
+			children = (
+				4BE0735A1C36F78C00CFDCC9 /* Arpeggio.png */,
+				4BE0735B1C36F78C00CFDCC9 /* Dharkan.png */,
+				4BE0735C1C36F78C00CFDCC9 /* Kazaar.png */,
+				4BE0735D1C36F78C00CFDCC9 /* Ristretto.png */,
+				4BE0735E1C36F78C00CFDCC9 /* Roma.png */,
+			);
+			name = Intenso;
+			sourceTree = "<group>";
+		};
+		4BE073551C36F70F00CFDCC9 /* Espresso */ = {
+			isa = PBXGroup;
+			children = (
+				4BE073641C36F7A500CFDCC9 /* Capriccio.png */,
+				4BE073651C36F7A500CFDCC9 /* Cosi.png */,
+				4BE073661C36F7A500CFDCC9 /* Livanto.png */,
+				4BE073671C36F7A500CFDCC9 /* Volluto.png */,
+			);
+			name = Espresso;
+			sourceTree = "<group>";
+		};
+		4BE073561C36F71600CFDCC9 /* Pure Origin */ = {
+			isa = PBXGroup;
+			children = (
+				4BE0736C1C36F7B400CFDCC9 /* Bukeela ka Ethiopia.png */,
+				4BE0736D1C36F7B400CFDCC9 /* Dulsao do Brasil.png */,
+				4BE0736E1C36F7B400CFDCC9 /* Indriya from India.png */,
+				4BE0736F1C36F7B400CFDCC9 /* Rosabaya de Colombia.png */,
+			);
+			name = "Pure Origin";
+			sourceTree = "<group>";
+		};
+		4BE073571C36F71F00CFDCC9 /* Lungo */ = {
+			isa = PBXGroup;
+			children = (
+				4BE073741C36F7BE00CFDCC9 /* Fortissio Lungo.png */,
+				4BE073751C36F7BE00CFDCC9 /* Linizio Lungo.png */,
+				4BE073761C36F7BE00CFDCC9 /* Vivalto Lungo.png */,
+			);
+			name = Lungo;
+			sourceTree = "<group>";
+		};
+		4BE073581C36F72700CFDCC9 /* Decaffeinato */ = {
+			isa = PBXGroup;
+			children = (
+				4BE0737A1C36F7C800CFDCC9 /* Decaffeinato Arpeggio.png */,
+				4BE0737B1C36F7C800CFDCC9 /* Decaffeinato Intenso.png */,
+				4BE0737C1C36F7C800CFDCC9 /* Decaffeinato Vivalto Lungo.png */,
+				4BE0737D1C36F7C800CFDCC9 /* Decaffeinato Volluto.png */,
+			);
+			name = Decaffeinato;
+			sourceTree = "<group>";
+		};
+		4BE073591C36F72F00CFDCC9 /* Variations */ = {
+			isa = PBXGroup;
+			children = (
+				4BE073821C36F7D800CFDCC9 /* Caramelito.png */,
+				4BE073831C36F7D800CFDCC9 /* Ciocattino.png */,
+				4BE073841C36F7D800CFDCC9 /* Vanilio.png */,
+			);
+			name = Variations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,14 +360,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BB133161C3355080040C5B6 /* Roma.png in Resources */,
-				4BB133151C3355080040C5B6 /* Ristretto.png in Resources */,
+				4BE073601C36F78C00CFDCC9 /* Dharkan.png in Resources */,
+				4BE073681C36F7A500CFDCC9 /* Capriccio.png in Resources */,
 				4BB132C51C314A8A0040C5B6 /* LaunchScreen.storyboard in Resources */,
+				4BE073771C36F7BE00CFDCC9 /* Fortissio Lungo.png in Resources */,
+				4BE073701C36F7B400CFDCC9 /* Bukeela ka Ethiopia.png in Resources */,
+				4BE073721C36F7B400CFDCC9 /* Indriya from India.png in Resources */,
+				4BE0736B1C36F7A500CFDCC9 /* Volluto.png in Resources */,
+				4BE0736A1C36F7A500CFDCC9 /* Livanto.png in Resources */,
+				4BE073801C36F7C800CFDCC9 /* Decaffeinato Vivalto Lungo.png in Resources */,
+				4BE073631C36F78C00CFDCC9 /* Roma.png in Resources */,
+				4BE073871C36F7D800CFDCC9 /* Vanilio.png in Resources */,
+				4BE0735F1C36F78C00CFDCC9 /* Arpeggio.png in Resources */,
 				4BB132C21C314A8A0040C5B6 /* Assets.xcassets in Resources */,
-				4BB133181C3355080040C5B6 /* Volluto.png in Resources */,
-				4BB133171C3355080040C5B6 /* Cosi.png in Resources */,
-				4BB133141C3355080040C5B6 /* Arpeggio.png in Resources */,
 				4BB132C01C314A8A0040C5B6 /* Main.storyboard in Resources */,
+				4BE073691C36F7A500CFDCC9 /* Cosi.png in Resources */,
+				4BE073731C36F7B400CFDCC9 /* Rosabaya de Colombia.png in Resources */,
+				4BE073611C36F78C00CFDCC9 /* Kazaar.png in Resources */,
+				4BE0737E1C36F7C800CFDCC9 /* Decaffeinato Arpeggio.png in Resources */,
+				4BE073621C36F78C00CFDCC9 /* Ristretto.png in Resources */,
+				4BE073851C36F7D800CFDCC9 /* Caramelito.png in Resources */,
+				4BE073711C36F7B400CFDCC9 /* Dulsao do Brasil.png in Resources */,
+				4BE073811C36F7C800CFDCC9 /* Decaffeinato Volluto.png in Resources */,
+				4BE073781C36F7BE00CFDCC9 /* Linizio Lungo.png in Resources */,
+				4BE0737F1C36F7C800CFDCC9 /* Decaffeinato Intenso.png in Resources */,
+				4BE073861C36F7D800CFDCC9 /* Ciocattino.png in Resources */,
+				4BE073791C36F7BE00CFDCC9 /* Vivalto Lungo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
