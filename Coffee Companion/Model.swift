@@ -44,12 +44,12 @@ class Model
 {
     private var dictionary = [String:Coffee]() // Dict to hold coffee types. Key = coffee name.
     
-    private var intensoArray = [Coffee]()
-    private var espressoArray = [Coffee]()
-    private var pureOriginArray = [Coffee]()
-    private var lungoArray = [Coffee]()
-    private var decaffeinatoArray = [Coffee]()
-    private var variationsArray = [Coffee]()
+    var intensoArray = [Coffee]()
+    var espressoArray = [Coffee]()
+    var pureOriginArray = [Coffee]()
+    var lungoArray = [Coffee]()
+    var decaffeinatoArray = [Coffee]()
+    var variationsArray = [Coffee]()
     
     var coffeeNames = [String]()
     var coffeeDetails = [Coffee]()
@@ -85,7 +85,7 @@ class Model
         
         // Decaffeinato
         decaffeinatoArray.append(Coffee(name: "Decaffeinato Arpeggio", intensity: 9, size: "Espresso (40ml)", aroma: "Intense", notes: "This coffee boasts strong character, intense body and cocoa notes", quantity: 10, icon: UIImage(named:"Decaffeinato Arpeggio.png")!))
-        decaffeinatoArray.append(Coffee(name: "Decaffeinato Volluto", intensity: 4, size: "Espresso (40ml)", aroma: "Fruity", notes: "This coffee reveals sweet and biscuity flavours, reinforced by a hint of acidity and a fruity note", quantity: 10, icon: UIImage(named:"Decaffeinato Volluto.png")!))
+        decaffeinatoArray.append(Coffee(name: "Decaffeinato Volluto", intensity: 4, size: "Espresso (40ml)", aroma: "Fruity", notes: "This coffee reveals sweet and biscuity flavours, reinforced by a hint of acidity and a fruity note", quantity: 9, icon: UIImage(named:"Decaffeinato Volluto.png")!))
         decaffeinatoArray.append(Coffee(name: "Decaffeinato Vivalto Lungo", intensity: 4, size: "Lungo (110ml)", aroma: "Fruity", notes: "This coffee perfectly preserves the complexity of separately roasted South American and East African Arabicas, combining both roasted and subtle floral notes", quantity: 10, icon: UIImage(named:"Decaffeinato Vivalto Lungo.png")!))
         decaffeinatoArray.append(Coffee(name: "Decaffeinato Intenso", intensity: 7, size: "Espresso (40ml)", aroma: "Intense", notes: "A full-bodied espresso with subtle cocoa and roasted cereal notes", quantity: 10, icon: UIImage(named:"Decaffeinato Intenso.png")!))
         
