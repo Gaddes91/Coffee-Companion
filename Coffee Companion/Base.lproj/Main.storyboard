@@ -26,7 +26,9 @@
                                     <constraint firstAttribute="width" constant="120" id="xAM-XB-CdR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="ADD SLEEVE"/>
+                                <state key="normal" title="ADD SLEEVE">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="addSleeve:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xVX-p8-uQ2"/>
                                 </connections>
@@ -38,7 +40,9 @@
                                     <constraint firstAttribute="height" constant="56" id="oWT-zy-RRA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="REMOVE POD"/>
+                                <state key="normal" title="REMOVE POD">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="removePod:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Exq-hp-iQ3"/>
                                 </connections>
@@ -79,10 +83,10 @@
                                 <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4B-YI-VAM">
-                                <rect key="frame" x="180" y="251" width="240" height="240"/>
+                                <rect key="frame" x="20" y="251" width="560" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="V0m-0c-gt8"/>
-                                    <constraint firstAttribute="width" constant="240" id="bZc-DL-5BL"/>
+                                    <constraint firstAttribute="width" constant="560" id="bZc-DL-5BL"/>
                                     <constraint firstAttribute="height" constant="240" id="oWB-P8-zXr"/>
                                 </constraints>
                                 <variation key="default">
@@ -95,7 +99,7 @@
                                 </connections>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGF-Dj-J72">
-                                <rect key="frame" x="278.5" y="346" width="43.5" height="50.5"/>
+                                <rect key="frame" x="278" y="346.5" width="43.5" height="50.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -164,7 +168,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="142" y="310"/>
+            <point key="canvasLocation" x="142" y="315"/>
+        </scene>
+        <!--Picker View Controller-->
+        <scene sceneID="BNn-Cq-LD4">
+            <objects>
+                <viewController id="lVo-9G-Fa1" customClass="UIPickerViewController" customModule="Coffee_Companion" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FYe-do-FFi"/>
+                        <viewControllerLayoutGuide type="bottom" id="sLK-Zh-G9S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SuO-CO-X9f">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kk4-4U-8ln">
+                                <rect key="frame" x="186" y="226" width="229" height="147"/>
+                                <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="229" id="XBQ-vT-aC6"/>
+                                    <constraint firstAttribute="height" constant="147" id="mzw-OT-r2K"/>
+                                </constraints>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kk4-4U-8ln" firstAttribute="centerY" secondItem="SuO-CO-X9f" secondAttribute="centerY" id="CrA-oX-gqb"/>
+                            <constraint firstItem="kk4-4U-8ln" firstAttribute="centerX" secondItem="SuO-CO-X9f" secondAttribute="centerX" id="RFK-FL-c2L"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="picker" destination="kk4-4U-8ln" id="Sfi-m6-EIv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C3j-ab-udg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904" y="315"/>
         </scene>
     </scenes>
 </document>

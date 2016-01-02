@@ -38,6 +38,7 @@
 		4BE073851C36F7D800CFDCC9 /* Caramelito.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE073821C36F7D800CFDCC9 /* Caramelito.png */; };
 		4BE073861C36F7D800CFDCC9 /* Ciocattino.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE073831C36F7D800CFDCC9 /* Ciocattino.png */; };
 		4BE073871C36F7D800CFDCC9 /* Vanilio.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE073841C36F7D800CFDCC9 /* Vanilio.png */; };
+		4BE0738D1C37E68500CFDCC9 /* UIPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0738C1C37E68500CFDCC9 /* UIPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		4BE073821C36F7D800CFDCC9 /* Caramelito.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Caramelito.png; sourceTree = "<group>"; };
 		4BE073831C36F7D800CFDCC9 /* Ciocattino.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ciocattino.png; sourceTree = "<group>"; };
 		4BE073841C36F7D800CFDCC9 /* Vanilio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Vanilio.png; sourceTree = "<group>"; };
+		4BE0738C1C37E68500CFDCC9 /* UIPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				4BB132BA1C314A8A0040C5B6 /* AppDelegate.swift */,
 				4BB132E81C32D1BC0040C5B6 /* Model.swift */,
 				4BB132BC1C314A8A0040C5B6 /* ViewController.swift */,
+				4BE0738C1C37E68500CFDCC9 /* UIPickerViewController.swift */,
 				4BB132BE1C314A8A0040C5B6 /* Main.storyboard */,
 				4BB132C11C314A8A0040C5B6 /* Assets.xcassets */,
 				4BB132C31C314A8A0040C5B6 /* LaunchScreen.storyboard */,
@@ -412,6 +415,7 @@
 			files = (
 				4BB132E91C32D1BC0040C5B6 /* Model.swift in Sources */,
 				4BB132BD1C314A8A0040C5B6 /* ViewController.swift in Sources */,
+				4BE0738D1C37E68500CFDCC9 /* UIPickerViewController.swift in Sources */,
 				4BB132BB1C314A8A0040C5B6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
