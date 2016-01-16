@@ -24,6 +24,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     var currentPage = 0 // When app is first run, "currentPage" will be 0. This matches the value of "page", as calculated in func loadVisiblePages()
     var currentPickerCategory: [Coffee] = [] // This is given an initial value in func viewDidLoad()
     
+    var intensoArrayCopy:[Coffee] = []
+    var espressoArrayCopy:[Coffee] = []
+    var pureOriginArrayCopy:[Coffee] = []
+    var lungoArrayCopy:[Coffee] = []
+    var decaffeinatoArrayCopy:[Coffee] = []
+    var variationsArrayCopy:[Coffee] = []
+    
     @IBAction func addSleeve(sender: UIButton)
     {
         // Update value within model itself (not just the label.text)
@@ -63,32 +70,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         currentPickerCategory = model.intensoArray
         showImagesForCurrentPickerCategory()
         
-//        // 1 Associate each individual image with a page in the Scroll View
-//        for value in model.coffeeDetails {
-//            pageImages.append(value.icon)
-//        }
-//        
-//        // The numberOfRemainingPods shown when the view first loads should relate to the current page.
-//        // TODO: currentPage should stay the same when user closes and re-opens the app.
-//        numberOfRemainingPods.text = "\(model.coffeeDetails[currentPage].quantity)"
-//        
-//        let pageCount = pageImages.count
-//        
-//        // 2
-//        pageControl.currentPage = 0
-//        pageControl.numberOfPages = pageCount
-//        
-//        // 3
-//        for _ in 0..<pageCount {
-//            pageViews.append(nil)
-//        }
-//        
-//        // 4
-//        let pagesScrollViewSize = scrollView.frame.size
-//        scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * CGFloat(pageImages.count), pagesScrollViewSize.height)
-//        
-//        // 5
-//        loadVisiblePages()
+        // Assign values to copied arrays
+        intensoArrayCopy = model.intensoArray
+        espressoArrayCopy = model.espressoArray
+        pureOriginArrayCopy = model.pureOriginArray
+        lungoArrayCopy = model.lungoArray
+        decaffeinatoArrayCopy = model.decaffeinatoArray
+        variationsArrayCopy = model.variationsArray
     }
     
     func showImagesForCurrentPickerCategory() {
@@ -238,27 +226,26 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     }
     
     // The data to return for the row and component (column) that's being passed in
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return pickerData[row]
+//    }
+    
+    // The data to return for the row and component (column) that's being passed in
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let string = pickerData[row]
+        return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         switch row {
         case 0:
-            // 1. Update currentPickerCategory
-            currentPickerCategory = model.intensoArray
-            
-            // 2. Clear array of page images so that new images can be loaded
-//            removeImagesFromPageImagesArray()
-            
-            // 3. Load images from intensoArray
-            showImagesForCurrentPickerCategory()
+            currentPickerCategory = model.intensoArray // 1. Update currentPickerCategory
+            showImagesForCurrentPickerCategory() // 2. Load images from intensoArray
         case 1:
             print("Espresso!")
             currentPickerCategory = model.espressoArray
             showImagesForCurrentPickerCategory()
-            
         case 2:
             print("Pure Origin!")
             currentPickerCategory = model.pureOriginArray

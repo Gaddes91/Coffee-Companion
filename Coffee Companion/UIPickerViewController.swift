@@ -34,7 +34,6 @@ class UIPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         switch row {
         case 0:
             print("Intenso!")
-            
         case 1:
             print("Espresso!")
         case 2:
