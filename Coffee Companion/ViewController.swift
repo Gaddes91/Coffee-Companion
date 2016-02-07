@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -37,6 +38,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         currentPickerCategory[currentPage].quantity = currentPickerCategory[currentPage].quantity + 10
         // Update label to show current value
         updateNumberOfRemainingPods()
+        
+        // TODO: check this works!
+        save()
     }
     
     @IBAction func removePod(sender: UIButton)
@@ -51,7 +55,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         }
     }
     
-    // MARK: START - ScrollView
+    // MARK: - ScrollView
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var pageControl: UIPageControl!
     
@@ -210,9 +214,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         loadVisiblePages()
     }
-    // MARK: END - ScrollView
 
-    // MARK: START - PickerView
+    // MARK: - PickerView
     var pickerData = ["Intenso", "Espresso", "Pure Origin", "Lungo", "Decaffeinato", "Variations"]
     
     // The number of columns of data
@@ -224,11 +227,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
-    
-    // The data to return for the row and component (column) that's being passed in
-//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return pickerData[row]
-//    }
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -266,11 +264,80 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             break
         }
     }
-    // MARK: END - PickerView
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - CoreData
+    var coffeesNS = [NSManagedObject]() // Array of type NSManagedObject
+    
+    func save() { // Save to CoreData
+        
+        // Useful Links:
+        // http://www.raywenderlich.com/115695/getting-started-with-core-data-tutorial
+        // https://www.youtube.com/watch?v=3IDfgATVqHw
+        
+        //1 - OK
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        //2 - OK
+        let entity = NSEntityDescription.entityForName("Coffee", inManagedObjectContext:managedContext)
+        
+        let coffee = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        //3 - OK
+        // TODO: update forKey to reflect current coffee!
+        coffee.setValue(currentPickerCategory[currentPage].quantity, forKey: "\(currentPickerCategory[currentPage].nameXCDataModel)")
+//        coffee.setValue(quantity, forKey: "quantity")
+        
+        // TODO: look up coffeeName in xcdatamodel and update quantity
+//        coffee.setValue(currentPickerCategory[currentPage].quantity, forKey: "coffeeName") // is this correct??
+        
+        //4 - OK
+        do {
+            try managedContext.save()
+            
+            print("Saved successfully! Quantity of \(currentPickerCategory[currentPage].nameXCDataModel) is now \(currentPickerCategory[currentPage].quantity)")
+            //5
+//            coffeesNS.append(coffee) // I don't think this is necessary since we don't want to add anything new to xcdatamodel
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    func load() { // Load from CoreData
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
+        request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
+//        var results: NSArray = try managedContext.executeFetchRequest(request)
+        
+        do { // Execute fetch request in a safe way
+            let results: NSArray = try managedContext.executeFetchRequest(request)
+            
+            // very basic error handling
+            if results.count > 0 {
+                for res in results {
+                    print(res)
+                }
+            } else {
+                print("0 results returned - Potential Error")
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        load()
     }
 }
 

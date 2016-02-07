@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B889E791C4AB2C900587BAA /* Coffee_Companion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B889E771C4AB2C900587BAA /* Coffee_Companion.xcdatamodeld */; };
 		4BB132BB1C314A8A0040C5B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB132BA1C314A8A0040C5B6 /* AppDelegate.swift */; };
 		4BB132BD1C314A8A0040C5B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB132BC1C314A8A0040C5B6 /* ViewController.swift */; };
 		4BB132C01C314A8A0040C5B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BB132BE1C314A8A0040C5B6 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B889E781C4AB2C900587BAA /* Coffee_Companion.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Coffee_Companion.xcdatamodel; sourceTree = "<group>"; };
 		4BB132B71C314A8A0040C5B6 /* Coffee Companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee Companion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BB132BA1C314A8A0040C5B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BB132BC1C314A8A0040C5B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				4BB132BA1C314A8A0040C5B6 /* AppDelegate.swift */,
 				4BB132E81C32D1BC0040C5B6 /* Model.swift */,
+				4B889E771C4AB2C900587BAA /* Coffee_Companion.xcdatamodeld */,
 				4BB132BC1C314A8A0040C5B6 /* ViewController.swift */,
 				4BE0738C1C37E68500CFDCC9 /* UIPickerViewController.swift */,
 				4BB132BE1C314A8A0040C5B6 /* Main.storyboard */,
@@ -415,6 +418,7 @@
 			files = (
 				4BB132E91C32D1BC0040C5B6 /* Model.swift in Sources */,
 				4BB132BD1C314A8A0040C5B6 /* ViewController.swift in Sources */,
+				4B889E791C4AB2C900587BAA /* Coffee_Companion.xcdatamodeld in Sources */,
 				4BE0738D1C37E68500CFDCC9 /* UIPickerViewController.swift in Sources */,
 				4BB132BB1C314A8A0040C5B6 /* AppDelegate.swift in Sources */,
 			);
@@ -664,6 +668,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4B889E771C4AB2C900587BAA /* Coffee_Companion.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4B889E781C4AB2C900587BAA /* Coffee_Companion.xcdatamodel */,
+			);
+			currentVersion = 4B889E781C4AB2C900587BAA /* Coffee_Companion.xcdatamodel */;
+			path = Coffee_Companion.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4BB132AF1C314A8A0040C5B6 /* Project object */;
 }
