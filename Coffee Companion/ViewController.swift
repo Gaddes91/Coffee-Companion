@@ -21,7 +21,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     
     let model = Model()
     
-    // MARK: The below value may have to be changed to ensure currentPage remains the same when user closes and re-opens the app
+    // TODO: The below value may have to be changed to ensure currentPage remains the same when user closes and re-opens the app
     var currentPage = 0 // When app is first run, "currentPage" will be 0. This matches the value of "page", as calculated in func loadVisiblePages()
     var currentPickerCategory: [Coffee] = [] // This is given an initial value in func viewDidLoad()
     
@@ -32,6 +32,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     var decaffeinatoArrayCopy:[Coffee] = []
     var variationsArrayCopy:[Coffee] = []
     
+    // MARK: CoreData global variable. Update this to accurately reflect current coffee during init?
+    var currentCoffeeQuantity = 0
+    
     @IBAction func addSleeve(sender: UIButton)
     {
         // Update value within model itself (not just the label.text)
@@ -40,7 +43,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         updateNumberOfRemainingPods()
         
         // TODO: check this works!
-        save()
+        save(currentPickerCategory[currentPage].nameXCDataModel)
     }
     
     @IBAction func removePod(sender: UIButton)
@@ -53,6 +56,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             // Update label to show current value
             updateNumberOfRemainingPods()
         }
+        
+        // TODO: call save() here 
+        // Alternatively, should save() be called within updateNumberOfRemainingPods() -> this way it will automatically be called in both addSleeve and removePod
     }
     
     // MARK: - ScrollView
@@ -93,7 +99,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         }
         
         // The numberOfRemainingPods shown when the view first loads should relate to the current page.
-        // TODO: currentPage should stay the same when user closes and re-opens the app.
+        // MARK: currentPage should stay the same when user closes and re-opens the app.
         numberOfRemainingPods.text = "\(currentPickerCategory[currentPage].quantity)"
         
         let pageCount = pageImages.count
@@ -273,7 +279,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     // MARK: - CoreData
     var coffeesNS = [NSManagedObject]() // Array of type NSManagedObject
     
-    func save() { // Save to CoreData
+    func save(coffeeName: String) { // Save to CoreData
         
         // Useful Links:
         // http://www.raywenderlich.com/115695/getting-started-with-core-data-tutorial
@@ -281,63 +287,72 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         
         //1 - OK
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
         let managedContext = appDelegate.managedObjectContext
+        
+        //1A - MG code to simplify variable naming
+        let coffeeQuantity = currentPickerCategory[currentPage].quantity
         
         //2 - OK
         let entity = NSEntityDescription.entityForName("Coffee", inManagedObjectContext:managedContext)
-        
         let coffee = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         //3 - OK
-        // TODO: update forKey to reflect current coffee!
-        coffee.setValue(currentPickerCategory[currentPage].quantity, forKey: "\(currentPickerCategory[currentPage].nameXCDataModel)")
-//        coffee.setValue(quantity, forKey: "quantity")
-        
         // TODO: look up coffeeName in xcdatamodel and update quantity
-//        coffee.setValue(currentPickerCategory[currentPage].quantity, forKey: "coffeeName") // is this correct??
+        coffee.setValue(coffeeQuantity, forKey: coffeeName) // is this correct??
         
         //4 - OK
         do {
             try managedContext.save()
             
-            print("Saved successfully! Quantity of \(currentPickerCategory[currentPage].nameXCDataModel) is now \(currentPickerCategory[currentPage].quantity)")
+            print("Saved successfully! Quantity of \(coffeeName) is now \(coffeeQuantity)")
             //5
 //            coffeesNS.append(coffee) // I don't think this is necessary since we don't want to add anything new to xcdatamodel
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
+        load()
     }
     
     func load() { // Load from CoreData
+        let currentCoffee = currentPickerCategory[currentPage]
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
         let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
+
         request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
-//        var results: NSArray = try managedContext.executeFetchRequest(request)
+//        request.predicate = NSPredicate(format: "\(currentCoffee.nameXCDataModel) = %i", currentCoffee.quantity) // limit search to the currently selected coffee type
         
         do { // Execute fetch request in a safe way
             let results: NSArray = try managedContext.executeFetchRequest(request)
             
-            // very basic error handling
-            if results.count > 0 {
+            print("results.valueForKey = \(results.valueForKey(currentPickerCategory[currentPage].nameXCDataModel))")
+            
+            // TODO: assign current coffeeQuantity to global variable
+            if let temp = results.valueForKey(currentCoffee.nameXCDataModel) as? Int { // downcast AnyObject to Optional(Int)
+                currentCoffeeQuantity = temp
+                print("currentCoffeeQuantity = \(currentCoffeeQuantity)")
+            }
+            
+            if results.count > 0 { // very basic error handling
                 for res in results {
                     print(res)
                 }
             } else {
-                print("0 results returned - Potential Error")
+                print("\(results.count) results returned - Potential Error")
             }
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
     }
     
+    // Re-write load() function using predicates
+    // function should be called each time user swipes/changes coffee type
+    // this way, the number (coffeeQuantity) shown to the user will always be the most up to date i.e. whatever was last saved to CoreData
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        load()
     }
 }
 
