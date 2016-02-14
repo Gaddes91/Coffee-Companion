@@ -41,9 +41,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         currentPickerCategory[currentPage].quantity = currentPickerCategory[currentPage].quantity + 10
         // Update label to show current value
         updateNumberOfRemainingPods()
-        
-        // TODO: check this works!
-        save(currentPickerCategory[currentPage].nameXCDataModel)
     }
     
     @IBAction func removePod(sender: UIButton)
@@ -288,13 +285,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         //1 - OK
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        
+
         //1A - MG code to simplify variable naming
         let coffeeQuantity = currentPickerCategory[currentPage].quantity
         
         //2 - OK
-        let entity = NSEntityDescription.entityForName("Coffee", inManagedObjectContext:managedContext)
-        let coffee = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let entity = NSEntityDescription.entityForName("Coffee", inManagedObjectContext: managedContext)
+        let coffee = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext) // MARK: this is for inserting a new value!!
         
         //3 - OK
         // TODO: look up coffeeName in xcdatamodel and update quantity
@@ -314,26 +311,24 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     }
     
     func load() { // Load from CoreData
-        let currentCoffee = currentPickerCategory[currentPage]
+//        let currentCoffee = currentPickerCategory[currentPage]
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
         let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
-
         request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
-//        request.predicate = NSPredicate(format: "\(currentCoffee.nameXCDataModel) = %i", currentCoffee.quantity) // limit search to the currently selected coffee type
         
         do { // Execute fetch request in a safe way
             let results: NSArray = try managedContext.executeFetchRequest(request)
             
-            print("results.valueForKey = \(results.valueForKey(currentPickerCategory[currentPage].nameXCDataModel))")
+            print("names = \(results.valueForKey("name")), quantities = \(results.valueForKey("quantity"))")
             
             // TODO: assign current coffeeQuantity to global variable
-            if let temp = results.valueForKey(currentCoffee.nameXCDataModel) as? Int { // downcast AnyObject to Optional(Int)
-                currentCoffeeQuantity = temp
-                print("currentCoffeeQuantity = \(currentCoffeeQuantity)")
-            }
+//            if let temp = results.valueForKey(currentCoffee.nameXCDataModel) as? Int { // downcast AnyObject to Optional(Int)
+//                currentCoffeeQuantity = temp
+//                print("currentCoffeeQuantity = \(currentCoffeeQuantity)")
+//            }
             
             if results.count > 0 { // very basic error handling
                 for res in results {
@@ -353,6 +348,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        load()
     }
 }
 
