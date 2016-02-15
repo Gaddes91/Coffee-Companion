@@ -58,16 +58,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Pure Origin
             let indriya = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                indriya.setValue("Indriya", forKey: "name")
+                indriya.setValue("Indriya from India", forKey: "name")
             
             let rosabaya = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                rosabaya.setValue("Rosabaya", forKey: "name")
+                rosabaya.setValue("Rosabaya de Colombia", forKey: "name")
             
             let dulsao = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                dulsao.setValue("Dulsao", forKey: "name")
+                dulsao.setValue("Dulsao do Brasil", forKey: "name")
             
             let bukeela = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                bukeela.setValue("Bukeela", forKey: "name")
+                bukeela.setValue("Bukeela ka Ethiopia", forKey: "name")
             
             // Lungo
             let fortissioLungo = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)

@@ -28,21 +28,23 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     @IBAction func addSleeve(sender: UIButton)
     {
         // Update value within model itself (not just the label.text)
-        currentPickerCategory[currentPage].quantity = currentPickerCategory[currentPage].quantity + 10
-
-        saveSelectedCoffee() // TODO: Delete if application crashes!
+//        currentPickerCategory[currentPage].quantity = currentPickerCategory[currentPage].quantity + 10
+        quantityRemaining.text = "\(Int(quantityRemaining.text!)! + 10)"
         
+        saveSelectedCoffee() // TODO: Delete if application crashes!
         updateQuantityRemainingLabel() // Update label to show current value
     }
     
     @IBAction func removePod(sender: UIButton)
     {
-        let num = currentPickerCategory[currentPage].quantity
+        let num = Int(quantityRemaining.text!)!
         
         if num > 0 {
             // Update value within model itself (not just the label.text)
-            currentPickerCategory[currentPage].quantity = num - 1
+            // TODO: remove the above comment - the following line updates the label only
+            quantityRemaining.text = "\(num - 1)"
             // Update label to show current value
+            saveSelectedCoffee()
             updateQuantityRemainingLabel()
         }
         
@@ -82,7 +84,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         // The quantityRemaining shown when the view first loads should relate to the current page.
         // MARK: currentPage should stay the same when user closes and re-opens the app.
 //        quantityRemaining.text = "\(currentPickerCategory[currentPage].quantity)" // TODO: update to work with Core Data - call function updateQuantityRemainingLabel()
-        updateQuantityRemainingLabel()
+//        updateQuantityRemainingLabel() - THIS function is already called from within loadVisiblePages()
         
         let pageCount = pageImages.count
         
@@ -193,6 +195,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
 //        quantityRemaining.text = "\(currentPickerCategory[currentPage].quantity)"
         
         let coffeeName = currentPickerCategory[currentPage].name
+        print("UPDATE - current coffee name = \(coffeeName)")
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -256,6 +259,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         
         switch row {
         case 0:
+            print("Intenso!")
             currentPickerCategory = model.intensoArray // 1. Update currentPickerCategory
             showImagesForCurrentPickerCategory() // 2. Load images from intensoArray
         case 1:
@@ -301,7 +305,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         // 2 - Update quantity of coffee
         // 3 - Save coffee back to CoreData
         let coffeeName = currentPickerCategory[currentPage].name
-        let coffeeQuantity = currentPickerCategory[currentPage].quantity // This value will be used to update Core Data model
+        print("SAVE - current coffee name = \(coffeeName)")
+        let coffeeQuantity = Int(quantityRemaining.text!)! // This value will be used to update Core Data model
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
