@@ -25,147 +25,84 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let entityDescription = NSEntityDescription.entityForName("Coffee", inManagedObjectContext: self.managedObjectContext)
             
-            // Create new entity for each type of coffee. For each individual coffee, assign name correctly and ensure quantity = 0
-            // MARK: New coffee types should be added here as/when necessary
-            // TODO: Remove this array and just type names into initialisers below!!!
-            let coffeeNames = [
-                
-                // Intenso
-                "Arpeggio",
-                "Dharkan",
-                "Kazaar",
-                "Ristretto",
-                "Roma",
-                
-                // Espresso
-                "Capriccio",
-                "Cosi",
-                "Livanto",
-                "Volluto",
-                
-                // Pure Origin
-                "Indriya from India",
-                "Rosabaya de Colombia",
-                "Dulsao do Brasil",
-                "Bukeela ka Ethiopia",
-                
-                // Lungo
-                "Fortissio Lungo",
-                "Vivalto Lungo",
-                "Linizio Lungo",
-                
-                // Decaffeinato
-                "Decaffeinato Arpeggio",
-                "Decaffeinato Volluto",
-                "Decaffeinato Vivalto Lungo",
-                "Decaffeinato Intenso",
-                
-                // Variations
-                "Ciocattino",
-                "Vanilio",
-                "Caramelito",
-            ]
-            
+            // Create new entity for each type of coffee. Assign name for each individual coffee. Quantity is given a default value of 0.
             // Insert new values (coffee types) into Managed Object Context
             // Intenso
             let arpeggio = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                arpeggio.setValue(coffeeNames[0], forKey: "name") // coffeeNames[0] = "Arpeggio"
-                arpeggio.setValue(0, forKey: "quantity")
+                arpeggio.setValue("Arpeggio", forKey: "name")
             
             let dharkan = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                dharkan.setValue(coffeeNames[1], forKey: "name") // coffeeNames[1] = "Dharkan"
-                dharkan.setValue(0, forKey: "quantity")
+                dharkan.setValue("Dharkan", forKey: "name")
             
             let kazaar = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                kazaar.setValue(coffeeNames[2], forKey: "name") // coffeeNames[2] = "Kazaar"
-                kazaar.setValue(0, forKey: "quantity")
+                kazaar.setValue("Kazaar", forKey: "name")
             
             let ristretto = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                ristretto.setValue(coffeeNames[3], forKey: "name") // coffeeNames[3] = "Ristretto"
-                ristretto.setValue(0, forKey: "quantity")
+                ristretto.setValue("Ristretto", forKey: "name")
             
             let roma = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                roma.setValue(coffeeNames[4], forKey: "name") // coffeeNames[4] = "Roma"
-                roma.setValue(0, forKey: "quantity")
+                roma.setValue("Roma", forKey: "name")
             
             // Espresso
             let capriccio = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                capriccio.setValue(coffeeNames[5], forKey: "name") // coffeeNames[5] = "Capriccio"
-                capriccio.setValue(0, forKey: "quantity")
+                capriccio.setValue("Capriccio", forKey: "name")
             
             let cosi = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                cosi.setValue(coffeeNames[6], forKey: "name") // coffeeNames[6] = "Cosi"
-                cosi.setValue(0, forKey: "quantity")
+                cosi.setValue("Cosi", forKey: "name")
             
             let livanto = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                livanto.setValue(coffeeNames[7], forKey: "name") // coffeeNames[7] = "Livanto"
-                livanto.setValue(0, forKey: "quantity")
+                livanto.setValue("Livanto", forKey: "name")
             
             let volluto = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                volluto.setValue(coffeeNames[8], forKey: "name") // coffeeNames[8] = "Volluto"
-                volluto.setValue(0, forKey: "quantity")
+                volluto.setValue("Volluto", forKey: "name")
             
             // Pure Origin
             let indriya = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                indriya.setValue(coffeeNames[9], forKey: "name") // coffeeNames[9] = "Indriya"
-                indriya.setValue(0, forKey: "quantity")
+                indriya.setValue("Indriya", forKey: "name")
             
             let rosabaya = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                rosabaya.setValue(coffeeNames[10], forKey: "name") // coffeeNames[10] = "Rosabaya"
-                rosabaya.setValue(0, forKey: "quantity")
+                rosabaya.setValue("Rosabaya", forKey: "name")
             
             let dulsao = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                dulsao.setValue(coffeeNames[11], forKey: "name") // coffeeNames[11] = "Dulsao"
-                dulsao.setValue(0, forKey: "quantity")
+                dulsao.setValue("Dulsao", forKey: "name")
             
             let bukeela = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                bukeela.setValue(coffeeNames[12], forKey: "name") // coffeeNames[12] = "Bukeela"
-                bukeela.setValue(0, forKey: "quantity")
+                bukeela.setValue("Bukeela", forKey: "name")
             
             // Lungo
             let fortissioLungo = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                fortissioLungo.setValue(coffeeNames[13], forKey: "name") // coffeeNames[13] = "Fortissio Lungo"
-                fortissioLungo.setValue(0, forKey: "quantity")
+                fortissioLungo.setValue("Fortissio Lungo", forKey: "name")
             
             let vivaltoLungo = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                vivaltoLungo.setValue(coffeeNames[14], forKey: "name") // coffeeNames[14] = "Vivalto Lungo"
-                vivaltoLungo.setValue(0, forKey: "quantity")
+                vivaltoLungo.setValue("Vivalto Lungo", forKey: "name")
             
             let linizioLungo = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                linizioLungo.setValue(coffeeNames[15], forKey: "name") // coffeeNames[15] = "Linizio Lungo"
-                linizioLungo.setValue(0, forKey: "quantity")
+                linizioLungo.setValue("Linizio Lungo", forKey: "name")
             
             // Decaffeinato
             let arpeggioDecaffeinato = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                arpeggioDecaffeinato.setValue(coffeeNames[16], forKey: "name") // coffeeNames[16] = "Decaffeinato Arpeggio"
-                arpeggioDecaffeinato.setValue(0, forKey: "quantity")
+                arpeggioDecaffeinato.setValue("Decaffeinato Arpeggio", forKey: "name")
             
             let vollutoDecaffeinato = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                vollutoDecaffeinato.setValue(coffeeNames[17], forKey: "name") // coffeeNames[17] = "Decaffeinato Volluto"
-                vollutoDecaffeinato.setValue(0, forKey: "quantity")
+                vollutoDecaffeinato.setValue("Decaffeinato Volluto", forKey: "name")
             
             let vivaltoLungoDecaffeinato = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                vivaltoLungoDecaffeinato.setValue(coffeeNames[18], forKey: "name") // coffeeNames[18] = "Decaffeinato Vivalto Lungo"
-                vivaltoLungoDecaffeinato.setValue(0, forKey: "quantity")
+                vivaltoLungoDecaffeinato.setValue("Decaffeinato Vivalto Lungo", forKey: "name")
             
             let intensoDecaffeinato = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                intensoDecaffeinato.setValue(coffeeNames[19], forKey: "name") // coffeeNames[19] = "Decaffeinato Intenso"
-                intensoDecaffeinato.setValue(0, forKey: "quantity")
+                intensoDecaffeinato.setValue("Decaffeinato Intenso", forKey: "name")
             
             // Variations
             let ciocattino = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                ciocattino.setValue(coffeeNames[20], forKey: "name") // coffeeNames[20] = "Ciocattino"
-                ciocattino.setValue(0, forKey: "quantity")
+                ciocattino.setValue("Ciocattino", forKey: "name")
             
             let vanilio = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                vanilio.setValue(coffeeNames[21], forKey: "name") // coffeeNames[21] = "Vanilio"
-                vanilio.setValue(0, forKey: "quantity")
+                vanilio.setValue("Vanilio", forKey: "name")
             
             let caramelito = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
-                caramelito.setValue(coffeeNames[22], forKey: "name") // coffeeNames[22] = "Caramelito"
-                caramelito.setValue(0, forKey: "quantity")
+                caramelito.setValue("Caramelito", forKey: "name")
             
-            print("\(coffeeNames)")
+            saveContext() // Save all new objects
             
             // Print to console and change bool value to "true"
             print("This is the first launch!")
@@ -173,15 +110,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSUserDefaults.standardUserDefaults().synchronize();
         } else {
             
-            // TODO: Load everything from CoreData here!
-            
+//            // MARK: - Load everything from CoreData
+//            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//            let managedContext = appDelegate.managedObjectContext
+//            
+//            let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
+//            request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
+//            
+//            do { // Execute fetch request in a safe way
+//                let results: NSArray = try managedContext.executeFetchRequest(request)
+//                
+//                if results.count > 0 { // very basic error handling
+//                    for res in results {
+//                        print(res)
+//                    }
+//                } else {
+//                    print("\(results.count) results returned - Potential Error")
+//                }
+//            } catch let error as NSError {
+//                print("Could not fetch \(error), \(error.userInfo)")
+//            }
+//            // MARK: -
             
             print("This is NOT the first launch")
         }
         
         return true
     }
-
+    
+//    // This is un-necessary since we are calling saveContext() - see above
+//    func saveCoreDataObject(objectName: AnyObject) {
+//        do {
+//            try objectName.managedObjectContext?.save()
+//        } catch {
+//            print(error)
+//        }
+//    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -262,7 +227,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-                abort()
+                abort() // TODO: implement proper error handling
             }
         }
     }

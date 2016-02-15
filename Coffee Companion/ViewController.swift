@@ -16,7 +16,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
 //    @IBOutlet weak var sizeLabel: UILabel!
 //    @IBOutlet weak var aromaLabel: UILabel!
 //    @IBOutlet weak var notesLabel: UILabel!
-    @IBOutlet weak var numberOfRemainingPods: UILabel!
+    @IBOutlet weak var quantityRemaining: UILabel!
     @IBOutlet weak var picker: UIPickerView!
     
     let model = Model()
@@ -25,22 +25,27 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     var currentPage = 0 // When app is first run, "currentPage" will be 0. This matches the value of "page", as calculated in func loadVisiblePages()
     var currentPickerCategory: [Coffee] = [] // This is given an initial value in func viewDidLoad()
     
-    var intensoArrayCopy:[Coffee] = []
-    var espressoArrayCopy:[Coffee] = []
-    var pureOriginArrayCopy:[Coffee] = []
-    var lungoArrayCopy:[Coffee] = []
-    var decaffeinatoArrayCopy:[Coffee] = []
-    var variationsArrayCopy:[Coffee] = []
+    // TODO: remove if unnecessary
+//    var intensoArrayCopy:[Coffee] = []
+//    var espressoArrayCopy:[Coffee] = []
+//    var pureOriginArrayCopy:[Coffee] = []
+//    var lungoArrayCopy:[Coffee] = []
+//    var decaffeinatoArrayCopy:[Coffee] = []
+//    var variationsArrayCopy:[Coffee] = []
     
     // MARK: CoreData global variable. Update this to accurately reflect current coffee during init?
+    // TODO: remove if unnecessary
     var currentCoffeeQuantity = 0
     
     @IBAction func addSleeve(sender: UIButton)
     {
         // Update value within model itself (not just the label.text)
         currentPickerCategory[currentPage].quantity = currentPickerCategory[currentPage].quantity + 10
+
+        saveSelectedCoffee() // TODO: Delete if application crashes!
+        
         // Update label to show current value
-        updateNumberOfRemainingPods()
+        updateQuantityRemainingLabel()
     }
     
     @IBAction func removePod(sender: UIButton)
@@ -51,11 +56,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             // Update value within model itself (not just the label.text)
             currentPickerCategory[currentPage].quantity = num - 1
             // Update label to show current value
-            updateNumberOfRemainingPods()
+            updateQuantityRemainingLabel()
         }
         
         // TODO: call save() here 
-        // Alternatively, should save() be called within updateNumberOfRemainingPods() -> this way it will automatically be called in both addSleeve and removePod
+        // Alternatively, should save() be called within updateQuantityRemaining() -> this way it will automatically be called in both addSleeve and removePod
     }
     
     // MARK: - ScrollView
@@ -77,13 +82,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         currentPickerCategory = model.intensoArray
         showImagesForCurrentPickerCategory()
         
+        // TODO: remove if unnecessary
         // Assign values to copied arrays
-        intensoArrayCopy = model.intensoArray
-        espressoArrayCopy = model.espressoArray
-        pureOriginArrayCopy = model.pureOriginArray
-        lungoArrayCopy = model.lungoArray
-        decaffeinatoArrayCopy = model.decaffeinatoArray
-        variationsArrayCopy = model.variationsArray
+//        intensoArrayCopy = model.intensoArray
+//        espressoArrayCopy = model.espressoArray
+//        pureOriginArrayCopy = model.pureOriginArray
+//        lungoArrayCopy = model.lungoArray
+//        decaffeinatoArrayCopy = model.decaffeinatoArray
+//        variationsArrayCopy = model.variationsArray
     }
     
     func showImagesForCurrentPickerCategory() {
@@ -95,9 +101,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             pageImages.append(value.icon)
         }
         
-        // The numberOfRemainingPods shown when the view first loads should relate to the current page.
+        // The quantityRemaining shown when the view first loads should relate to the current page.
         // MARK: currentPage should stay the same when user closes and re-opens the app.
-        numberOfRemainingPods.text = "\(currentPickerCategory[currentPage].quantity)"
+        quantityRemaining.text = "\(currentPickerCategory[currentPage].quantity)" // TODO: update to work with Core Data - call function updateQuantityRemainingLabel()
         
         let pageCount = pageImages.count
         
@@ -197,13 +203,52 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             purgePage(index)
         }
         
-        updateNumberOfRemainingPods()
+        updateQuantityRemainingLabel()
         updateInfoLabels()
     }
     
     // For each coffee type, keep the associated label.text in sync with current number of coffee pods
-    func updateNumberOfRemainingPods() {
-        numberOfRemainingPods.text = "\(currentPickerCategory[currentPage].quantity)"
+    func updateQuantityRemainingLabel() { // Use CoreData to retrieve the quantity of the currently selected coffee
+        
+        // TODO: remove once confirmed Core Data working
+//        quantityRemaining.text = "\(currentPickerCategory[currentPage].quantity)"
+        
+        let coffeeName = currentPickerCategory[currentPage].name
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        // 1 - Fetch individual coffee type from CoreData (use predicates?)
+        let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
+        request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
+        request.predicate = NSPredicate(format: "name = %@", coffeeName) // Create predicate - only fetch the coffee we wish to update
+        
+        do { // Execute fetch request in a safe way
+            
+            let resultArray = try managedContext.executeFetchRequest(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
+            
+            if resultArray.count == 1 { // We only expect a single result
+                
+                let result = resultArray[0] // Assign first (and only) result to constant named result.
+                
+                if let quantity = result.valueForKey("quantity") as! Int? { // Downcast quantity to type Int
+                    quantityRemaining.text = "\(quantity)"
+                }
+                
+                // Save quantity of selected coffee only
+//                do {
+//                    try managedContext.save()
+//                    print("Saved successfully! Quantity of \(coffeeName) is now \(quantityRemaining.text!)")
+//                } catch let error as NSError  {
+//                    print("Could not save \(error), \(error.userInfo)")
+//                }
+                
+            } else {
+                print("Potential Error - \(resultArray.count) results returned.")
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
     }
     
     func updateInfoLabels() {
@@ -274,43 +319,68 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     }
     
     // MARK: - CoreData
-    var coffeesNS = [NSManagedObject]() // Array of type NSManagedObject
+    // TODO: Write function to retrieve (and return) the currently selected coffee? This would avoid repetition in the save() and update() functions, for example.
     
-    func save(coffeeName: String) { // Save to CoreData
+    func saveSelectedCoffee() { // Save to CoreData
         
         // Useful Links:
         // http://www.raywenderlich.com/115695/getting-started-with-core-data-tutorial
         // https://www.youtube.com/watch?v=3IDfgATVqHw
         
-        //1 - OK
+        // 1 - Fetch individual coffee type from CoreData (use predicates?)
+        // 2 - Update quantity of coffee
+        // 3 - Save coffee back to CoreData
+        let coffeeName = currentPickerCategory[currentPage].name
+        let coffeeQuantity = currentPickerCategory[currentPage].quantity // This value will be used to update Core Data model
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-
-        //1A - MG code to simplify variable naming
-        let coffeeQuantity = currentPickerCategory[currentPage].quantity
+        
+        // 1 - Fetch individual coffee type from CoreData (use predicates?)
+        let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
+        request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
+        request.predicate = NSPredicate(format: "name = %@", coffeeName) // Create predicate - only fetch the coffee we wish to update
+        
+        do { // Execute fetch request in a safe way
+            
+            let resultArray = try managedContext.executeFetchRequest(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
+            
+            if resultArray.count == 1 { // We only expect a single result
+                
+                let result = resultArray[0] // Assign first (and only) result to constant named result.
+                
+                result.setValue(coffeeQuantity, forKey: "quantity") // Update quantity for selected coffee
+                
+                // Save quantity of selected coffee only
+                do {
+                    try managedContext.save()
+                    print("Saved successfully! Quantity of \(coffeeName) is now \(coffeeQuantity)")
+                } catch let error as NSError  {
+                    print("Could not save \(error), \(error.userInfo)")
+                }
+                
+//                print("result of fetch w/predicate = \(resultArray)")
+            
+            } else {
+                print("Potential Error - \(resultArray.count) results returned.")
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+//        load()
+        
+        
+        
         
         //2 - OK
-        let entity = NSEntityDescription.entityForName("Coffee", inManagedObjectContext: managedContext)
-        let coffee = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext) // MARK: this is for inserting a new value!!
+//        let entity = NSEntityDescription.entityForName("Coffee", inManagedObjectContext: managedContext) // is this necessary? Perhaps this is only needed when inserting a new entity?
         
         //3 - OK
         // TODO: look up coffeeName in xcdatamodel and update quantity
-        coffee.setValue(coffeeQuantity, forKey: coffeeName) // is this correct??
-        
-        //4 - OK
-        do {
-            try managedContext.save()
-            
-            print("Saved successfully! Quantity of \(coffeeName) is now \(coffeeQuantity)")
-            //5
-//            coffeesNS.append(coffee) // I don't think this is necessary since we don't want to add anything new to xcdatamodel
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        }
-        load()
+//        coffeeName.setValue(coffeeQuantity, forKey: "quantity") // is this correct??
     }
     
-    func load() { // Load from CoreData
+    func loadAllCoffees() { // Load from CoreData
 //        let currentCoffee = currentPickerCategory[currentPage]
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -322,20 +392,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         do { // Execute fetch request in a safe way
             let results: NSArray = try managedContext.executeFetchRequest(request)
             
-            print("names = \(results.valueForKey("name")), quantities = \(results.valueForKey("quantity"))")
-            
-            // TODO: assign current coffeeQuantity to global variable
-//            if let temp = results.valueForKey(currentCoffee.nameXCDataModel) as? Int { // downcast AnyObject to Optional(Int)
-//                currentCoffeeQuantity = temp
-//                print("currentCoffeeQuantity = \(currentCoffeeQuantity)")
-//            }
-            
             if results.count > 0 { // very basic error handling
                 for res in results {
                     print(res)
                 }
             } else {
-                print("\(results.count) results returned - Potential Error")
+                print("Potential Error - \(results.count) results returned")
             }
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
@@ -348,7 +410,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        load()
+        loadAllCoffees()
     }
 }
 

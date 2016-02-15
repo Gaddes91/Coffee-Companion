@@ -130,33 +130,15 @@
                     </view>
                     <connections>
                         <outlet property="nameLabel" destination="5kg-l3-6q2" id="xA2-pC-u5V"/>
-                        <outlet property="numberOfRemainingPods" destination="FGF-Dj-J72" id="d0J-Rf-Mhy"/>
                         <outlet property="pageControl" destination="5E3-8f-prD" id="qSk-tr-88H"/>
                         <outlet property="picker" destination="kk4-4U-8ln" id="tXt-A1-UKP"/>
+                        <outlet property="quantityRemaining" destination="FGF-Dj-J72" id="aj7-wP-XH2"/>
                         <outlet property="scrollView" destination="a4B-YI-VAM" id="m5f-i0-8w2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="142" y="315"/>
-        </scene>
-        <!--Picker View Controller-->
-        <scene sceneID="BNn-Cq-LD4">
-            <objects>
-                <viewController id="lVo-9G-Fa1" customClass="UIPickerViewController" customModule="Coffee_Companion" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FYe-do-FFi"/>
-                        <viewControllerLayoutGuide type="bottom" id="sLK-Zh-G9S"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="SuO-CO-X9f">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C3j-ab-udg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="904" y="315"/>
         </scene>
     </scenes>
 </document>
