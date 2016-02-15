@@ -25,18 +25,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     var currentPage = 0 // When app is first run, "currentPage" will be 0. This matches the value of "page", as calculated in func loadVisiblePages()
     var currentPickerCategory: [Coffee] = [] // This is given an initial value in func viewDidLoad()
     
-    // TODO: remove if unnecessary
-//    var intensoArrayCopy:[Coffee] = []
-//    var espressoArrayCopy:[Coffee] = []
-//    var pureOriginArrayCopy:[Coffee] = []
-//    var lungoArrayCopy:[Coffee] = []
-//    var decaffeinatoArrayCopy:[Coffee] = []
-//    var variationsArrayCopy:[Coffee] = []
-    
-    // MARK: CoreData global variable. Update this to accurately reflect current coffee during init?
-    // TODO: remove if unnecessary
-    var currentCoffeeQuantity = 0
-    
     @IBAction func addSleeve(sender: UIButton)
     {
         // Update value within model itself (not just the label.text)
@@ -81,15 +69,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         // When app first loads the default category will be "intenso"
         currentPickerCategory = model.intensoArray
         showImagesForCurrentPickerCategory()
-        
-        // TODO: remove if unnecessary
-        // Assign values to copied arrays
-//        intensoArrayCopy = model.intensoArray
-//        espressoArrayCopy = model.espressoArray
-//        pureOriginArrayCopy = model.pureOriginArray
-//        lungoArrayCopy = model.lungoArray
-//        decaffeinatoArrayCopy = model.decaffeinatoArray
-//        variationsArrayCopy = model.variationsArray
     }
     
     func showImagesForCurrentPickerCategory() {
@@ -234,15 +213,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
                 if let quantity = result.valueForKey("quantity") as! Int? { // Downcast quantity to type Int
                     quantityRemaining.text = "\(quantity)"
                 }
-                
-                // Save quantity of selected coffee only
-//                do {
-//                    try managedContext.save()
-//                    print("Saved successfully! Quantity of \(coffeeName) is now \(quantityRemaining.text!)")
-//                } catch let error as NSError  {
-//                    print("Could not save \(error), \(error.userInfo)")
-//                }
-                
             } else {
                 print("Potential Error - \(resultArray.count) results returned.")
             }
@@ -358,9 +328,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
                 } catch let error as NSError  {
                     print("Could not save \(error), \(error.userInfo)")
                 }
-                
-//                print("result of fetch w/predicate = \(resultArray)")
-            
             } else {
                 print("Potential Error - \(resultArray.count) results returned.")
             }
@@ -368,16 +335,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             print("Could not fetch \(error), \(error.userInfo)")
         }
 //        load()
-        
-        
-        
-        
-        //2 - OK
-//        let entity = NSEntityDescription.entityForName("Coffee", inManagedObjectContext: managedContext) // is this necessary? Perhaps this is only needed when inserting a new entity?
-        
-        //3 - OK
-        // TODO: look up coffeeName in xcdatamodel and update quantity
-//        coffeeName.setValue(coffeeQuantity, forKey: "quantity") // is this correct??
     }
     
     func loadAllCoffees() { // Load from CoreData
