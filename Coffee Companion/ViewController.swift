@@ -32,8 +32,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
 
         saveSelectedCoffee() // TODO: Delete if application crashes!
         
-        // Update label to show current value
-        updateQuantityRemainingLabel()
+        updateQuantityRemainingLabel() // Update label to show current value
     }
     
     @IBAction func removePod(sender: UIButton)
@@ -82,7 +81,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         
         // The quantityRemaining shown when the view first loads should relate to the current page.
         // MARK: currentPage should stay the same when user closes and re-opens the app.
-        quantityRemaining.text = "\(currentPickerCategory[currentPage].quantity)" // TODO: update to work with Core Data - call function updateQuantityRemainingLabel()
+//        quantityRemaining.text = "\(currentPickerCategory[currentPage].quantity)" // TODO: update to work with Core Data - call function updateQuantityRemainingLabel()
+        updateQuantityRemainingLabel()
         
         let pageCount = pageImages.count
         
