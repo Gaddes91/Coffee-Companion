@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let entityDescription = NSEntityDescription.entityForName("Coffee", inManagedObjectContext: self.managedObjectContext)
             
-            // Create new entity for each type of coffee. Assign name for each individual coffee. Quantity is given a default value of 0.
+            // Create new entity for each type of coffee. Assigned name must exactly match the name given to each individual coffee in the model. Quantity is implicitly given a default value of 0.
             // Insert new values (coffee types) into Managed Object Context
             // Intenso
             let arpeggio = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
@@ -109,43 +109,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstlaunch1.0")
             NSUserDefaults.standardUserDefaults().synchronize();
         } else {
-            
-//            // MARK: - Load everything from CoreData
-//            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//            let managedContext = appDelegate.managedObjectContext
-//            
-//            let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
-//            request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
-//            
-//            do { // Execute fetch request in a safe way
-//                let results: NSArray = try managedContext.executeFetchRequest(request)
-//                
-//                if results.count > 0 { // very basic error handling
-//                    for res in results {
-//                        print(res)
-//                    }
-//                } else {
-//                    print("\(results.count) results returned - Potential Error")
-//                }
-//            } catch let error as NSError {
-//                print("Could not fetch \(error), \(error.userInfo)")
-//            }
-//            // MARK: -
-            
             print("This is NOT the first launch")
         }
-        
         return true
     }
-    
-//    // This is un-necessary since we are calling saveContext() - see above
-//    func saveCoreDataObject(objectName: AnyObject) {
-//        do {
-//            try objectName.managedObjectContext?.save()
-//        } catch {
-//            print(error)
-//        }
-//    }
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

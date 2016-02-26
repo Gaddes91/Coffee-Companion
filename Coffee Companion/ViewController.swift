@@ -27,29 +27,24 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     
     @IBAction func addSleeve(sender: UIButton)
     {
-        // Update value within model itself (not just the label.text)
-//        currentPickerCategory[currentPage].quantity = currentPickerCategory[currentPage].quantity + 10
-        quantityRemaining.text = "\(Int(quantityRemaining.text!)! + 10)"
-        
-        saveSelectedCoffee() // TODO: Delete if application crashes!
-        updateQuantityRemainingLabel() // Update label to show current value
+        if let _ = Int(quantityRemaining.text!) { // Check that quantityRemaining (String) can be expressed as type Int
+            saveQuantityToDataModel(incrementOrDecrement: 10) // Save newly-updated value to CoreData (increase by 10)
+            loadQuantityFromDataModel() // Load value from CoreData and update label
+        } else {
+            print("Error - Value of quantityRemaining cannot be expressed as type Int")
+        }
     }
     
     @IBAction func removePod(sender: UIButton)
     {
-        let num = Int(quantityRemaining.text!)!
-        
-        if num > 0 {
-            // Update value within model itself (not just the label.text)
-            // TODO: remove the above comment - the following line updates the label only
-            quantityRemaining.text = "\(num - 1)"
-            // Update label to show current value
-            saveSelectedCoffee()
-            updateQuantityRemainingLabel()
+        if let num = Int(quantityRemaining.text!) { // Check that quantityRemaining (String) can be expressed as type Int
+            if num > 0 { // This prevents number of pods being a negative number
+                saveQuantityToDataModel(incrementOrDecrement: -1) // Save newly-updated value to CoreData (decrease by 1)
+                loadQuantityFromDataModel() // Load value from CoreData and update label
+            }
+        } else {
+            print("Error - Value of quantityRemaining cannot be expressed as type Int")
         }
-        
-        // TODO: call save() here 
-        // Alternatively, should save() be called within updateQuantityRemaining() -> this way it will automatically be called in both addSleeve and removePod
     }
     
     // MARK: - ScrollView
@@ -184,15 +179,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             purgePage(index)
         }
         
-        updateQuantityRemainingLabel()
+        loadQuantityFromDataModel()
         updateInfoLabels()
     }
     
-    // For each coffee type, keep the associated label.text in sync with current number of coffee pods
-    func updateQuantityRemainingLabel() { // Use CoreData to retrieve the quantity of the currently selected coffee
+    func loadQuantityFromDataModel() {
         
-        // TODO: remove once confirmed Core Data working
-//        quantityRemaining.text = "\(currentPickerCategory[currentPage].quantity)"
+        // For the currently-selected coffee type, this function loads the value of "quantity" from Core Data and uses it to update the label on screen (quantityRemaining)
         
         let coffeeName = currentPickerCategory[currentPage].name
         print("UPDATE - current coffee name = \(coffeeName)")
@@ -295,7 +288,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     // MARK: - CoreData
     // TODO: Write function to retrieve (and return) the currently selected coffee? This would avoid repetition in the save() and update() functions, for example.
     
-    func saveSelectedCoffee() { // Save to CoreData
+    func saveQuantityToDataModel(incrementOrDecrement incrementOrDecrement: Int) { // Save to CoreData
         
         // Useful Links:
         // http://www.raywenderlich.com/115695/getting-started-with-core-data-tutorial
@@ -306,7 +299,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         // 3 - Save coffee back to CoreData
         let coffeeName = currentPickerCategory[currentPage].name
         print("SAVE - current coffee name = \(coffeeName)")
-        let coffeeQuantity = Int(quantityRemaining.text!)! // This value will be used to update Core Data model
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -324,22 +316,27 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
                 
                 let result = resultArray[0] // Assign first (and only) result to constant named result.
                 
-                result.setValue(coffeeQuantity, forKey: "quantity") // Update quantity for selected coffee
+                // Update quantity and save to Core Data, all in one step
+                if let currentQuantity = result.valueForKey("quantity") as! Int? { // Downcast quantity to type Int
+                    let updatedQuantity = currentQuantity + incrementOrDecrement // Calculate updated quantity by adding or subtracting (as appropriate)
+                    result.setValue(updatedQuantity, forKey: "quantity") // Assign updated quantity to selected coffee in Core Data
+                } else {
+                    print("Error - 'quantity' is not an Int")
+                }
                 
                 // Save quantity of selected coffee only
                 do {
                     try managedContext.save()
-                    print("Saved successfully! Quantity of \(coffeeName) is now \(coffeeQuantity)")
+                    print("Saved successfully!")
                 } catch let error as NSError  {
-                    print("Could not save \(error), \(error.userInfo)")
+                    print("Error - Could not save \(error), \(error.userInfo)")
                 }
             } else {
                 print("Potential Error - \(resultArray.count) results returned.")
             }
         } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
+            print("Error - Could not fetch \(error), \(error.userInfo)")
         }
-//        load()
     }
     
     func loadAllCoffees() { // Load from CoreData
