@@ -17,8 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        let versionNumber = "1.0" // MARK: version number
+        
         // Check whether the user has launched the app previously
-        if (!NSUserDefaults.standardUserDefaults().boolForKey("firstlaunch1.0")) {
+        if (!NSUserDefaults.standardUserDefaults().boolForKey("firstlaunch\(versionNumber)")) {
 
             // This code will be executed only once.
             // If the user has NOT launched the app previously, then we must initialise and populate the Core Data database
@@ -105,11 +107,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             saveContext() // Save all new objects
             
             // Print to console and change bool value to "true"
-            print("This is the first launch!")
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstlaunch1.0")
+            print("This is the first launch of version \(versionNumber)")
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstlaunch\(versionNumber)")
             NSUserDefaults.standardUserDefaults().synchronize();
         } else {
-            print("This is NOT the first launch")
+            print("This is NOT the first launch of version \(versionNumber)")
         }
         return true
     }
