@@ -16,6 +16,7 @@
 		4BB132D01C314A8B0040C5B6 /* Coffee_CompanionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB132CF1C314A8B0040C5B6 /* Coffee_CompanionTests.swift */; };
 		4BB132DB1C314A8B0040C5B6 /* Coffee_CompanionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB132DA1C314A8B0040C5B6 /* Coffee_CompanionUITests.swift */; };
 		4BB132E91C32D1BC0040C5B6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB132E81C32D1BC0040C5B6 /* Model.swift */; };
+		4BC28FC91CA80530002D7C0D /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC28FC81CA80530002D7C0D /* MenuTableViewController.swift */; };
 		4BE0735F1C36F78C00CFDCC9 /* Arpeggio.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0735A1C36F78C00CFDCC9 /* Arpeggio.png */; };
 		4BE073601C36F78C00CFDCC9 /* Dharkan.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0735B1C36F78C00CFDCC9 /* Dharkan.png */; };
 		4BE073611C36F78C00CFDCC9 /* Kazaar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0735C1C36F78C00CFDCC9 /* Kazaar.png */; };
@@ -74,6 +75,7 @@
 		4BB132DA1C314A8B0040C5B6 /* Coffee_CompanionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee_CompanionUITests.swift; sourceTree = "<group>"; };
 		4BB132DC1C314A8B0040C5B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BB132E81C32D1BC0040C5B6 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		4BC28FC81CA80530002D7C0D /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		4BE0735A1C36F78C00CFDCC9 /* Arpeggio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arpeggio.png; sourceTree = "<group>"; };
 		4BE0735B1C36F78C00CFDCC9 /* Dharkan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dharkan.png; sourceTree = "<group>"; };
 		4BE0735C1C36F78C00CFDCC9 /* Kazaar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kazaar.png; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				4B889E771C4AB2C900587BAA /* Coffee_Companion.xcdatamodeld */,
 				4BB132BC1C314A8A0040C5B6 /* ViewController.swift */,
 				4BB132BE1C314A8A0040C5B6 /* Main.storyboard */,
+				4BC28FC81CA80530002D7C0D /* MenuTableViewController.swift */,
 				4BB132C11C314A8A0040C5B6 /* Assets.xcassets */,
 				4BB132C31C314A8A0040C5B6 /* LaunchScreen.storyboard */,
 				4BB132C61C314A8A0040C5B6 /* Info.plist */,
@@ -415,6 +418,7 @@
 			files = (
 				4BB132E91C32D1BC0040C5B6 /* Model.swift in Sources */,
 				4BB132BD1C314A8A0040C5B6 /* ViewController.swift in Sources */,
+				4BC28FC91CA80530002D7C0D /* MenuTableViewController.swift in Sources */,
 				4B889E791C4AB2C900587BAA /* Coffee_Companion.xcdatamodeld in Sources */,
 				4BB132BB1C314A8A0040C5B6 /* AppDelegate.swift in Sources */,
 			);
