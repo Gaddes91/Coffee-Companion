@@ -94,9 +94,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxa-qz-NAO">
-                                <rect key="frame" x="533" y="32" width="50" height="24"/>
+                                <rect key="frame" x="546" y="32" width="34" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="qnP-yD-SWj"/>
+                                    <constraint firstAttribute="width" constant="34" id="qnP-yD-SWj"/>
                                 </constraints>
                                 <state key="normal" image="Menu_horiz"/>
                                 <connections>
@@ -124,7 +124,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="5kg-l3-6q2" secondAttribute="leading" id="LaJ-OU-cOX"/>
                             <constraint firstItem="5kg-l3-6q2" firstAttribute="top" secondItem="kk4-4U-8ln" secondAttribute="bottom" constant="8" id="Nw6-K8-eZa"/>
                             <constraint firstItem="FGF-Dj-J72" firstAttribute="centerX" secondItem="a4B-YI-VAM" secondAttribute="centerX" id="RX5-80-0MX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bxa-qz-NAO" secondAttribute="trailing" constant="-3" id="S0T-cm-Wog"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bxa-qz-NAO" secondAttribute="trailing" id="S0T-cm-Wog"/>
                             <constraint firstItem="mO3-85-NHi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="Sab-th-4im"/>
                             <constraint firstItem="kk4-4U-8ln" firstAttribute="top" secondItem="5kg-l3-6q2" secondAttribute="bottom" constant="8" id="U3N-w2-XiZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5kg-l3-6q2" secondAttribute="trailing" id="bge-z1-maT"/>
@@ -686,7 +686,7 @@
                                 <action selector="editItemsInMenu:" destination="xv2-D9-JMy" id="QXq-Rb-AbF"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Menu_vert" id="nBI-fq-2pU">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="nBI-fq-2pU">
                             <connections>
                                 <segue destination="zhs-Xo-oFW" kind="unwind" unwindAction="saveAndReturn:" id="l55-DY-out"/>
                             </connections>
@@ -729,7 +729,6 @@
         <image name="Dharkan.png" width="1206" height="1206"/>
         <image name="Kazaar.png" width="1208" height="1208"/>
         <image name="Menu_horiz" width="24" height="24"/>
-        <image name="Menu_vert" width="24" height="24"/>
         <image name="Ristretto.png" width="1206" height="1206"/>
         <image name="Roma.png" width="1204" height="1204"/>
         <image name="Top of Screen" width="980" height="540"/>
