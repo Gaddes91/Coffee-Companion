@@ -329,8 +329,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     }
     
     // MARK: - Unwind Segues for MenuTableViewController
-    
     @IBAction func saveAndReturn(segue:UIStoryboardSegue) {
+    }
+    
+    // TODO: Determine which coffees should be presented to the user (they may have switched one or more off in the menu)
+    func determine() {
     }
     
     // MARK: - Default Overrides

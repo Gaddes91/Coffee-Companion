@@ -14,13 +14,13 @@ import CoreData
 var coffees = [Coffee]()
 
 struct Coffee { // Defines the attributes a coffee must have
-    var name: String
-    var intensity: Int
-    var size: String
-    var aroma: String
-    var notes: String
-    var icon: UIImage
-    var isIncludedSwitchName: String
+    let name: String
+    let intensity: Int
+    let size: String
+    let aroma: String
+    let notes: String
+    let icon: UIImage
+    let isIncludedSwitchName: String
     
     init (name: String, intensity: Int, size: String, aroma: String, notes: String, icon: UIImage, isIncludedSwitchName: String) {
         self.name = name

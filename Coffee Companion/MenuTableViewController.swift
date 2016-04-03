@@ -20,18 +20,23 @@ class MenuTableViewController: UITableViewController {
     
     // MARK: - isIncluded menu switches ACTIONS
     @IBAction func isIncludedArpeggio_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedArpeggio_OUTLET)
         printIsIncludedSwitchStatus()
     }
     @IBAction func isIncludedDharkan_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedDharkan_OUTLET)
         printIsIncludedSwitchStatus()
     }
     @IBAction func isIncludedKazaar_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedKazaar_OUTLET)
         printIsIncludedSwitchStatus()
     }
     @IBAction func isIncludedRistretto_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedRistretto_OUTLET)
         printIsIncludedSwitchStatus()
     }
     @IBAction func isIncludedRoma_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedRoma_OUTLET)
         printIsIncludedSwitchStatus()
     }
     // MARK: -
@@ -53,13 +58,13 @@ class MenuTableViewController: UITableViewController {
         }
     }
     
-    func updateIsIncludedCoreData(switchName: UISwitch) { // TODO: pass in switchName when switch changes...
+    func updateIsIncludedStatusWithinCoreData(switchOutlet switchOutlet: UISwitch) { // TODO: pass in switchOutlet when switch changes...
         
         var coffeeName = ""
         var newSwitchStatus = true // Initialiser defaults to true
         
         // Call switch method to determine which of the UISwitches was activated
-        switch switchName {
+        switch switchOutlet {
         case isIncludedArpeggio_OUTLET:
             // This name must exactly match the name assigned in the model (i.e. when calling Coffee.name). This, in turn, exactly matches the name within the data model (assigned within AppDelegate.swift)
             coffeeName = "Arpeggio"
@@ -73,13 +78,13 @@ class MenuTableViewController: UITableViewController {
             coffeeName = "Roma"
         default:
             break
-            // We should either:
+            // TODO: We should either:
             //     1. Break out of the whole function here, to avoid erroneously altering any core data values
             //     2. Say coffeeName = "" and then handle the error a few lines down... what happens if NSPredicate cannot find a value (i.e. a coffee whose name = "")?
         }
         
         // Assign true/false depending on whether switch is on/off. This will be used to update core data.
-        if switchName.on == true { // If switch is ON
+        if switchOutlet.on == true { // If switch is ON
             newSwitchStatus = true
         } else { // If switch is OFF
             newSwitchStatus = false
@@ -112,7 +117,12 @@ class MenuTableViewController: UITableViewController {
                 // Save switch status of selected coffee only
                 do {
                     try managedContext.save()
-                    print("Saved successfully!")
+                    if newSwitchStatus == true {
+                        print("Saved successfully - \(coffeeName) WILL be included")
+                    } else {
+                        print("Saved successfully - \(coffeeName) WON'T be included")
+                    }
+                    
                 } catch let error as NSError  {
                     print("Error - Could not save \(error), \(error.userInfo)")
                 }
@@ -123,7 +133,6 @@ class MenuTableViewController: UITableViewController {
             print("Error - Could not fetch \(error), \(error.userInfo)")
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
