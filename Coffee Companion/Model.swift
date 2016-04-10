@@ -39,6 +39,9 @@ struct Coffee { // Defines the attributes a coffee must have
 
 class Model
 {
+    
+    // TODO: 
+    
     var intensoArray = [Coffee]()
     var espressoArray = [Coffee]()
     var pureOriginArray = [Coffee]()
