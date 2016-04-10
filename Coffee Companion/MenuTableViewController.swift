@@ -180,6 +180,48 @@ class MenuTableViewController: UITableViewController {
             coffeeName = "Ristretto"
         case isIncludedRoma_OUTLET:
             coffeeName = "Roma"
+        
+        case isIncludedCapriccio_OUTLET:
+            coffeeName = "Capriccio"
+        case isIncludedCosi_OUTLET:
+            coffeeName = "Cosi"
+        case isIncludedLivanto_OUTLET:
+            coffeeName = "Livanto"
+        case isIncludedVolluto_OUTLET:
+            coffeeName = "Volluto"
+        
+        case isIncludedBukeela_OUTLET:
+            coffeeName = "Bukeela ka Ethiopia"
+        case isIncludedDulsao_OUTLET:
+            coffeeName = "Dulsao do Brasil"
+        case isIncludedIndriya_OUTLET:
+            coffeeName = "Indriya from India"
+        case isIncludedRosabaya_OUTLET:
+            coffeeName = "Rosabaya de Colombia"
+            
+        case isIncludedFortissio_OUTLET:
+            coffeeName = "Fortissio Lungo"
+        case isIncludedLinizio_OUTLET:
+            coffeeName = "Linizio Lungo"
+        case isIncludedVivalto_OUTLET:
+            coffeeName = "Vivalto Lungo"
+            
+        case isIncludedDecafArpeggio_OUTLET:
+            coffeeName = "Decaffeinato Arpeggio"
+        case isIncludedDecafIntenso_OUTLET:
+            coffeeName = "Decaffeinato Intenso"
+        case isIncludedDecafVivalto_OUTLET:
+            coffeeName = "Decaffeinato Vivalto Lungo"
+        case isIncludedDecafVolluto_OUTLET:
+            coffeeName = "Decaffeinato Volluto"
+            
+        case isIncludedCaramelito_OUTLET:
+            coffeeName = "Caramelito"
+        case isIncludedCiocattino_OUTLET:
+            coffeeName = "Ciocattino"
+        case isIncludedVanilio_OUTLET:
+            coffeeName = "Vanilio"
+            
         default:
             break
             // TODO: We should either:
