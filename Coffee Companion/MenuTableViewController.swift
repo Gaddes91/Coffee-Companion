@@ -18,6 +18,30 @@ class MenuTableViewController: UITableViewController {
     @IBOutlet weak var isIncludedRistretto_OUTLET: UISwitch!
     @IBOutlet weak var isIncludedRoma_OUTLET: UISwitch!
     
+    @IBOutlet weak var isIncludedCapriccio_OUTLET: UISwitch!
+    @IBOutlet weak var isIncludedCosi_OUTLET: UISwitch!
+    @IBOutlet weak var isIncludedLivanto_OUTLET: UISwitch!
+    @IBOutlet weak var isIncludedVolluto_OUTLET: UISwitch!
+    
+    @IBOutlet weak var isIncludedBukeela_OUTLET: UISwitch!
+    @IBOutlet weak var isIncludedDulsao_OUTLET: UISwitch!
+    @IBOutlet weak var isIncludedIndriya_OUTLET: UISwitch!
+    @IBOutlet weak var isIncludedRosabaya_OUTLET: UISwitch!
+
+    @IBOutlet weak var isIncludedFortissio_OUTLET: UISwitch!
+    @IBOutlet weak var isIncludedLinizio_OUTLET: UISwitch!
+    @IBOutlet weak var isIncludedVivalto_OUTLET: UISwitch!
+    
+    @IBOutlet weak var isIncludedDecafArpeggio_OUTLET: UISwitch!
+    @IBOutlet weak var isIncludedDecafIntenso_OUTLET: UISwitch!
+    @IBOutlet weak var isIncludedDecafVivalto_OUTLET: UISwitch!
+    @IBOutlet weak var isIncludedDecafVolluto_OUTLET: UISwitch!
+    
+    @IBOutlet weak var isIncludedCaramelito_OUTLET: UISwitch!
+    @IBOutlet weak var isIncludedCiocattino_OUTLET: UISwitch!
+    @IBOutlet weak var isIncludedVanilio_OUTLET: UISwitch!
+    
+    
     // MARK: - isIncluded menu switches ACTIONS
     @IBAction func isIncludedArpeggio_ACTION(sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedArpeggio_OUTLET)
@@ -39,6 +63,85 @@ class MenuTableViewController: UITableViewController {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedRoma_OUTLET)
         printIsIncludedSwitchStatus()
     }
+    
+    @IBAction func isIncludedCapriccio_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedCapriccio_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    @IBAction func isIncludedCosi_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedCosi_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    @IBAction func isIncludedLivanto_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedLivanto_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    @IBAction func isIncludedVolluto_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedVolluto_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    
+    @IBAction func isIncludedBukeela_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedBukeela_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    @IBAction func isIncludedDulsao_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedDulsao_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    @IBAction func isIncludedIndriya_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedIndriya_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    @IBAction func isIncludedRosabaya_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedRosabaya_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    
+    @IBAction func isIncludedFortissio_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedFortissio_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    @IBAction func isIncludedLinizio_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedLinizio_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    @IBAction func isIncludedVivalto_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedVivalto_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    
+    @IBAction func isIncludedDecafArpeggio_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedDecafArpeggio_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    @IBAction func isIncludedDecafIntenso_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedDecafIntenso_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    @IBAction func isIncludedDecafVivalto_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedDecafVivalto_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    @IBAction func isIncludedDecafVolluto_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedDecafVolluto_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    
+    @IBAction func isIncludedCaramelito_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedCaramelito_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    @IBAction func isIncludedCiocattino_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedCiocattino_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    @IBAction func isIncludedVanilio_ACTION(sender: UISwitch) {
+        updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedVanilio_OUTLET)
+        printIsIncludedSwitchStatus()
+    }
+    
+    
     // MARK: -
     
     // TODO: Test whether boolean values are really changing within core data
