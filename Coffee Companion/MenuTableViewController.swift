@@ -67,6 +67,7 @@ class MenuTableViewController: UITableViewController {
         switch switchOutlet {
         case isIncludedArpeggio_OUTLET:
             // This name must exactly match the name assigned in the model (i.e. when calling Coffee.name). This, in turn, exactly matches the name within the data model (assigned within AppDelegate.swift)
+            // Rather than simply typing the name of each coffee below, we could retrieve each one from the model itself. This would be safer, however it would also be (slightly) more taxing on the CPU, and so it has been left as-is
             coffeeName = "Arpeggio"
         case isIncludedDharkan_OUTLET:
             coffeeName = "Dharkan"

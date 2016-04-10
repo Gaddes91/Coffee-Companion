@@ -33,7 +33,7 @@ struct Coffee { // Defines the attributes a coffee must have
         
         // Populate array with coffee types
         // Each coffee type in this array will have a number associated with it. This number is dependent upon the order in which the coffees are initialised.
-        coffees.append(self)
+        coffees.append(self) // MARK: Is there any point in this?
     }
 }
 
