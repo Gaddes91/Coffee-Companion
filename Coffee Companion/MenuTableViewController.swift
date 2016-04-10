@@ -264,6 +264,29 @@ class MenuTableViewController: UITableViewController {
         print("Kazaar switch ON = \(isIncludedKazaar_OUTLET.on)")
         print("Ristretto switch ON = \(isIncludedRistretto_OUTLET.on)")
         print("Roma switch ON = \(isIncludedRoma_OUTLET.on)")
+        
+        print("Capriccio switch ON = \(isIncludedCapriccio_OUTLET.on)")
+        print("Cosi switch ON = \(isIncludedCosi_OUTLET.on)")
+        print("Livanto switch ON = \(isIncludedLivanto_OUTLET.on)")
+        print("Volluto switch ON = \(isIncludedVolluto_OUTLET.on)")
+        
+        print("Bukeela ka Ethiopia switch ON = \(isIncludedBukeela_OUTLET.on)")
+        print("Dulsao do Brasil switch ON = \(isIncludedDulsao_OUTLET.on)")
+        print("Indriya from India switch ON = \(isIncludedIndriya_OUTLET.on)")
+        print("Rosabaya de Colombia switch ON = \(isIncludedRosabaya_OUTLET.on)")
+        
+        print("Fortissio Lungo switch ON = \(isIncludedFortissio_OUTLET.on)")
+        print("Linizio Lungo switch ON = \(isIncludedLinizio_OUTLET.on)")
+        print("Vivalto Lungo switch ON = \(isIncludedVivalto_OUTLET.on)")
+        
+        print("Decaffeinato Arpeggio switch ON = \(isIncludedDecafArpeggio_OUTLET.on)")
+        print("Decaffeinato Intenso switch ON = \(isIncludedDecafIntenso_OUTLET.on)")
+        print("Decaffeinato Vivalto Lungo switch ON = \(isIncludedDecafVivalto_OUTLET.on)")
+        print("Decaffeinato Volluto switch ON = \(isIncludedDecafVolluto_OUTLET.on)")
+        
+        print("Caramelito switch ON = \(isIncludedCaramelito_OUTLET.on)")
+        print("Ciocattino switch ON = \(isIncludedCiocattino_OUTLET.on)")
+        print("Vanilio switch ON = \(isIncludedVanilio_OUTLET.on)")
     }
     
     

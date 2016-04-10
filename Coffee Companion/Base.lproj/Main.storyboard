@@ -504,8 +504,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="Y3x-8T-iF4"/>
                                                     <exclude reference="RFP-bW-BxS"/>
+                                                    <exclude reference="Y3x-8T-iF4"/>
                                                     <exclude reference="ldR-z7-1AY"/>
                                                 </mask>
                                             </variation>
@@ -616,8 +616,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="jkg-3l-ksp"/>
                                                     <exclude reference="dCc-ox-CCV"/>
+                                                    <exclude reference="jkg-3l-ksp"/>
                                                     <exclude reference="1Nq-Aq-Tb4"/>
                                                 </mask>
                                             </variation>
@@ -844,8 +844,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="cVF-NR-nHy"/>
                                                     <exclude reference="P5f-yy-Xk8"/>
+                                                    <exclude reference="cVF-NR-nHy"/>
                                                     <exclude reference="zY8-yd-Iff"/>
                                                 </mask>
                                             </variation>
@@ -900,8 +900,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="R87-zW-A4n"/>
                                                     <exclude reference="FfP-tq-2sc"/>
+                                                    <exclude reference="R87-zW-A4n"/>
                                                     <exclude reference="T5N-uA-7ZN"/>
                                                 </mask>
                                             </variation>
@@ -1072,8 +1072,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="wPd-iH-Mir"/>
                                                     <exclude reference="DsW-sp-2Le"/>
+                                                    <exclude reference="wPd-iH-Mir"/>
                                                     <exclude reference="KIR-DN-IFg"/>
                                                 </mask>
                                             </variation>
@@ -1132,8 +1132,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="oxl-UM-Vs8"/>
                                                     <exclude reference="bTy-Lu-6ya"/>
+                                                    <exclude reference="oxl-UM-Vs8"/>
                                                     <exclude reference="SSz-wK-NMi"/>
                                                 </mask>
                                             </variation>
@@ -1244,8 +1244,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="zBg-UX-w4r"/>
                                                     <exclude reference="1pE-N1-zoG"/>
+                                                    <exclude reference="zBg-UX-w4r"/>
                                                     <exclude reference="xoR-pe-FEw"/>
                                                 </mask>
                                             </variation>
@@ -1360,8 +1360,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="seQ-Ho-O2V"/>
                                                     <exclude reference="K2U-hb-EEf"/>
+                                                    <exclude reference="seQ-Ho-O2V"/>
                                                     <exclude reference="vTn-gq-UlY"/>
                                                 </mask>
                                             </variation>
@@ -1472,8 +1472,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="FHu-Qe-h2w"/>
                                                     <exclude reference="Dhx-fY-lQo"/>
+                                                    <exclude reference="FHu-Qe-h2w"/>
                                                     <exclude reference="O1j-Ea-csI"/>
                                                 </mask>
                                             </variation>
