@@ -65,25 +65,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         picker.dataSource = self
         
         // When app first loads the default category will be "intenso"
-        currentPickerCategory = model.intensoArray
+//        currentPickerCategory = model.intensoArray
+//        showImagesForCurrentPickerCategory()
+        
+        currentPickerCategory = createArrayFromDictionary(model.intensoDict)
         showImagesForCurrentPickerCategory()
-    }
-    
-    func createArrayFromDictionary(dict: [String : Coffee]) -> [Coffee] { // Used to create an array holding only the coffees for which .isIncluded == true
-        
-        var outputArray = [Coffee]()
-        
-        // rearrange items in dict to be in alphabetical order of key
-        // if we require the items to be sorted in a particular order, we can sort them using the attribute ".orderingNo" - the value associated with this attribute can be changed in the model to define the order of coffees
-        let sortedDict = dict.sort { $0.0 < $1.0 } // see above
-        
-        for item in sortedDict { // loop through items in newly-sorted array
-            if item.1.isIncluded == true { // TODO: confirm coffee is to be included - replace this with result from core data!
-                outputArray.append(item.1)
-            }
-        }
-        
-        return outputArray
     }
     
     func showImagesForCurrentPickerCategory() {
@@ -263,6 +249,25 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         default:
             break
         }
+    }
+    
+    // MARK: - Create and Update Arrays
+    
+    func createArrayFromDictionary(dict: [String : Coffee]) -> [Coffee] { // Used to create an array holding only the coffees for which .isIncluded == true
+        
+        var outputArray = [Coffee]()
+        
+        // rearrange items in dict to be in alphabetical order of key
+        // if we require the items to be sorted in a particular order, we can sort them using the attribute ".orderingNo" - the value associated with this attribute can be changed in the model to define the order of coffees
+        let sortedDict = dict.sort { $0.0 < $1.0 } // see above
+        
+        for item in sortedDict { // loop through items in newly-sorted array
+            if item.1.isIncluded == true { // TODO: confirm coffee is to be included - replace this with result from core data!
+                outputArray.append(item.1)
+            }
+        }
+        
+        return outputArray
     }
     
     // MARK: - CoreData
