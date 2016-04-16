@@ -24,6 +24,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     @IBOutlet weak var quantityRemaining: UILabel!
     @IBOutlet weak var picker: UIPickerView!
     
+    // Create arrays - these will be updated through the function updateArrays()
+    var intensoArray = [Coffee]()
+    var espressoArray = [Coffee]()
+    var pureOriginArray = [Coffee]()
+    var lungoArray = [Coffee]()
+    var decaffeinatoArray = [Coffee]()
+    var variationsArray = [Coffee]()
+    
     let model = Model()
     
     // TODO: The below value may have to be changed to ensure currentPage remains the same when user closes and re-opens the app
@@ -268,6 +276,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         }
         
         return outputArray
+    }
+    
+    func updateArrays() { // Update all arrays at once (arrays created from dictionaries)
+        
     }
     
     // MARK: - CoreData
