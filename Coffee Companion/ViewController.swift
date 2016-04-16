@@ -278,8 +278,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         return outputArray
     }
     
+    // TODO: call this function when app loads (populate arrays!)
     func updateArrays() { // Update all arrays at once (arrays created from dictionaries)
-        
+        intensoArray = createArrayFromDictionary(model.intensoDict)
+        espressoArray = createArrayFromDictionary(model.espressoDict)
+        pureOriginArray = createArrayFromDictionary(model.pureOriginDict)
+        lungoArray = createArrayFromDictionary(model.lungoDict)
+        decaffeinatoArray = createArrayFromDictionary(model.decaffeinatoDict)
+        variationsArray = createArrayFromDictionary(model.variationsDict)
     }
     
     // MARK: - CoreData
