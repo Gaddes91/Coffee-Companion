@@ -272,11 +272,45 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         let sortedDict = dict.sort { $0.0 < $1.0 } // see above
         
         for item in sortedDict { // loop through items in newly-sorted array
-            if item.1.isIncluded == true { // TODO: confirm coffee is to be included - replace this with result from core data!
-                outputArray.append(item.1)
+            
+            // MARK: optimise core data?
+            // Can we fetch an array of items from core data, rather than having to fetch each coffee individually (and create a new managedContext etc.) each time?
+            
+            let coffeeName = item.1.name // MARK: This must exactly match the coffee name within core data
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext
+            
+            // Fetch individual coffee type from CoreData using predicates
+            let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
+            request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
+            request.predicate = NSPredicate(format: "name = %@", coffeeName) // Create predicate - only fetch the coffee we wish to update
+            
+            do { // Execute fetch request in a safe way
+                
+                let resultArray = try managedContext.executeFetchRequest(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
+                
+                if resultArray.count == 1 { // We only expect a single result
+                    
+                    let result = resultArray[0] // Assign first (and only) result to constant named result.
+                    
+                    // Check whether isIncluded == true or false
+                    if let trueOrFalse = result.valueForKey("isIncluded") as! Bool? { // Downcast isIncluded to type Bool
+                        // Mark: downcast - type safety
+                        // See above, is there a way to avoid forced downcast? Currently it is necessary because result.valueForKey is returned as type AnyObject
+                        if trueOrFalse == true {
+                            outputArray.append(item.1)
+                        }
+                    } else {
+                        print("Error - 'isIncluded' is not a Bool")
+                    }
+                } else {
+                    print("Potential Error - \(resultArray.count) results returned.")
+                }
+            } catch let error as NSError {
+                print("Error - Could not fetch \(error), \(error.userInfo)")
             }
         }
-        
         return outputArray
     }
     
