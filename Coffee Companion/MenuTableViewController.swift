@@ -41,7 +41,6 @@ class MenuTableViewController: UITableViewController {
     @IBOutlet weak var isIncludedCiocattino_OUTLET: UISwitch!
     @IBOutlet weak var isIncludedVanilio_OUTLET: UISwitch!
     
-    
     // MARK: - isIncluded menu switches ACTIONS
     @IBAction func isIncludedArpeggio_ACTION(sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedArpeggio_OUTLET)
@@ -141,22 +140,147 @@ class MenuTableViewController: UITableViewController {
         printIsIncludedSwitchStatus()
     }
     
-    
     // MARK: -
     
-    // TODO: Load boolean values for every coffee type when main view appears - this will allow us to prevent showing coffees when they are not required.
-    
-    
-    func checkStatusOfSwitches() {
-        print("\(isIncludedArpeggio_OUTLET.enabled)")
+    // This func to be used in combination with updateStatusOfAllSwitches()
+    func updateIndividualSwitchStatus(switchOutlet switchOutlet: UISwitch) {
+        
+        var coffeeName = ""
+        
+        // The following switch statement has been copied directly from func updateIsIncludedStatusWithinCoreData() -> see this method for comments
+        switch switchOutlet {
+        case isIncludedArpeggio_OUTLET:
+            coffeeName = "Arpeggio"
+        case isIncludedDharkan_OUTLET:
+            coffeeName = "Dharkan"
+        case isIncludedKazaar_OUTLET:
+            coffeeName = "Kazaar"
+        case isIncludedRistretto_OUTLET:
+            coffeeName = "Ristretto"
+        case isIncludedRoma_OUTLET:
+            coffeeName = "Roma"
+            
+        case isIncludedCapriccio_OUTLET:
+            coffeeName = "Capriccio"
+        case isIncludedCosi_OUTLET:
+            coffeeName = "Cosi"
+        case isIncludedLivanto_OUTLET:
+            coffeeName = "Livanto"
+        case isIncludedVolluto_OUTLET:
+            coffeeName = "Volluto"
+            
+        case isIncludedBukeela_OUTLET:
+            coffeeName = "Bukeela ka Ethiopia"
+        case isIncludedDulsao_OUTLET:
+            coffeeName = "Dulsao do Brasil"
+        case isIncludedIndriya_OUTLET:
+            coffeeName = "Indriya from India"
+        case isIncludedRosabaya_OUTLET:
+            coffeeName = "Rosabaya de Colombia"
+            
+        case isIncludedFortissio_OUTLET:
+            coffeeName = "Fortissio Lungo"
+        case isIncludedLinizio_OUTLET:
+            coffeeName = "Linizio Lungo"
+        case isIncludedVivalto_OUTLET:
+            coffeeName = "Vivalto Lungo"
+            
+        case isIncludedDecafArpeggio_OUTLET:
+            coffeeName = "Decaffeinato Arpeggio"
+        case isIncludedDecafIntenso_OUTLET:
+            coffeeName = "Decaffeinato Intenso"
+        case isIncludedDecafVivalto_OUTLET:
+            coffeeName = "Decaffeinato Vivalto Lungo"
+        case isIncludedDecafVolluto_OUTLET:
+            coffeeName = "Decaffeinato Volluto"
+            
+        case isIncludedCaramelito_OUTLET:
+            coffeeName = "Caramelito"
+        case isIncludedCiocattino_OUTLET:
+            coffeeName = "Ciocattino"
+        case isIncludedVanilio_OUTLET:
+            coffeeName = "Vanilio"
+            
+        default:
+            break
+        }
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        // Fetch individual coffee type from CoreData using predicates
+        let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
+        request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
+        request.predicate = NSPredicate(format: "name = %@", coffeeName) // Create predicate - only fetch the coffee we wish to update
+        
+        do { // Execute fetch request in a safe way
+            
+            let resultArray = try managedContext.executeFetchRequest(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
+            
+            if resultArray.count == 1 { // We only expect a single result
+                
+                let result = resultArray[0] // Assign first (and only) result to constant named result.
+                
+                // Check the current status of isIncluded in core data
+                if let isIncluded = result.valueForKey("isIncluded") as! Bool? { // Downcast switch status to type Bool
+                    
+                    // TODO: CHECK THIS!
+                    // Does the following code change the actual switch itself? Or does it simply change the variable...
+                    
+                    if isIncluded == true {
+//                        switchOutlet.on = true
+                        switchOutlet.setOn(true, animated: false) // If the coffee is to be included, the switch should be ON
+                    } else {
+//                        switchOutlet.on = false
+                        switchOutlet.setOn(false, animated: false) // If not, the switch should be OFF
+                    }
+
+                } else {
+                    print("Error - 'isIncluded' is not a Bool")
+                }
+            } else {
+                print("Potential Error - \(resultArray.count) results returned.")
+            }
+        } catch let error as NSError {
+            print("Error - Could not fetch \(error), \(error.userInfo)")
+        }
     }
     
-    func updateIsIncludedStatus() {
-        if isIncludedArpeggio_OUTLET.enabled == true {
-            // TODO: set isIncluded parameter in Core Data = TRUE
-        } else {
-            // TODO: set isIncluded = FALSE
-        }
+    func updateStatusOfAllSwitches() {
+        
+        // 1. link each individual switch to its respective coffee
+        // 2. cycle through every coffee, checking within core data whether isIncluded == true
+        // 3a. if isIncluded == true -> switch.on = true
+        // 3b. else (== false) -> switch.on = false
+        
+        updateIndividualSwitchStatus(switchOutlet: isIncludedArpeggio_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedDharkan_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedKazaar_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedRistretto_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedRoma_OUTLET)
+        
+        updateIndividualSwitchStatus(switchOutlet: isIncludedCapriccio_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedCosi_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedLivanto_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedVolluto_OUTLET)
+        
+        updateIndividualSwitchStatus(switchOutlet: isIncludedBukeela_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedDulsao_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedIndriya_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedRosabaya_OUTLET)
+        
+        updateIndividualSwitchStatus(switchOutlet: isIncludedFortissio_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedLinizio_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedVivalto_OUTLET)
+        
+        updateIndividualSwitchStatus(switchOutlet: isIncludedDecafArpeggio_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedDecafIntenso_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedDecafVivalto_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedDecafVolluto_OUTLET)
+        
+        updateIndividualSwitchStatus(switchOutlet: isIncludedCaramelito_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedCiocattino_OUTLET)
+        updateIndividualSwitchStatus(switchOutlet: isIncludedVanilio_OUTLET)
     }
     
     func updateIsIncludedStatusWithinCoreData(switchOutlet switchOutlet: UISwitch) { // Pass in switchOutlet when switch changes
@@ -281,8 +405,10 @@ class MenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        updateStatusOfAllSwitches()
+        
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+//         self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
          self.navigationItem.leftBarButtonItem = self.editButtonItem()
