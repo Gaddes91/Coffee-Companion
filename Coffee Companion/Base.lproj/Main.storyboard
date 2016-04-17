@@ -1496,7 +1496,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="nBI-fq-2pU">
                             <connections>
-                                <segue destination="zhs-Xo-oFW" kind="unwind" unwindAction="saveAndReturn:" id="l55-DY-out"/>
+                                <segue destination="zhs-Xo-oFW" kind="unwind" unwindAction="unwindFromMenu:" id="lVr-Ca-O9N"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

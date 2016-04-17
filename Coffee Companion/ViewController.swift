@@ -36,7 +36,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     
     // TODO: The below value may have to be changed to ensure currentPage remains the same when user closes and re-opens the app
     var currentPage = 0 // When app is first run, "currentPage" will be 0. This matches the value of "page", as calculated in func loadVisiblePages()
-    var currentPickerCategory: [Coffee] = [] // This is given an initial value in func viewDidLoad()
+    var currentPickerCategory = [Coffee]() // This is given an initial value in func viewDidLoad()
+    var currentPickerCategoryName = "" // This is used during unwind segue to determine the currentPickerCategory (and then reload the appropriate coffees)
     
     @IBAction func addSleeve(sender: UIButton)
     {
@@ -74,11 +75,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         picker.delegate = self
         picker.dataSource = self
         
-        // When app first loads the default category will be "intenso"
-//        currentPickerCategory = model.intensoArray
-//        showImagesForCurrentPickerCategory()
-        
         currentPickerCategory = intensoArray // When app first loads the default category will be "intenso"
+        currentPickerCategoryName = "Intenso"
+        
         showImagesForCurrentPickerCategory()
     }
     
@@ -235,26 +234,32 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         case 0:
             print("Intenso!")
             currentPickerCategory = intensoArray // Update currentPickerCategory
+            currentPickerCategoryName = "Intenso" // Update currentPickerCategoryName
             showImagesForCurrentPickerCategory() // Load images from intensoArray
         case 1:
             print("Espresso!")
             currentPickerCategory = espressoArray
+            currentPickerCategoryName = "Espresso"
             showImagesForCurrentPickerCategory()
         case 2:
             print("Pure Origin!")
             currentPickerCategory = pureOriginArray
+            currentPickerCategoryName = "Pure Origin"
             showImagesForCurrentPickerCategory()
         case 3:
             print("Lungo!")
             currentPickerCategory = lungoArray
+            currentPickerCategoryName = "Lungo"
             showImagesForCurrentPickerCategory()
         case 4:
             print("Decaffeinato!")
             currentPickerCategory = decaffeinatoArray
+            currentPickerCategoryName = "Decaffeinato"
             showImagesForCurrentPickerCategory()
         case 5:
             print("Variations!")
             currentPickerCategory = variationsArray
+            currentPickerCategoryName = "Variations"
             showImagesForCurrentPickerCategory()
         default:
             break
@@ -405,16 +410,32 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     }
     
     // MARK: - Unwind Segues for MenuTableViewController
-    @IBAction func saveAndReturn(segue:UIStoryboardSegue) {
+    @IBAction func unwindFromMenu(unwindSegue: UIStoryboardSegue) {
         
-        // https://www.youtube.com/watch?v=guSYMPaXLaw
-//        var destination = segue.destinationViewController as! MenuTableViewController
+        // Reload/refresh currentPickerCategory. This is achieved by using a switch statement to determine the name of the currentPickerCategory, then using this knowledge to assign the appropriate array back to currentPickerCategory. This assignment replaces the old array with the updated array of the same name (effectively reloading/refreshing the coffees). This is necessary because, after the user returns (unwinds) from the menu, it is likely that individual coffees will have been added or removed.
         
-        // MARK: CONTINUE from here!!x
-    }
-    
-    // TODO: Determine which coffees should be presented to the user (they may have switched one or more off in the menu)
-    func determine() {
+        updateArrays() // Update all arrays (only include coffees for which isIncluded == true)
+        
+        switch currentPickerCategoryName { // Update currentPickerCategory
+        case "Intenso":
+            currentPickerCategory = intensoArray
+        case "Espresso":
+            currentPickerCategory = espressoArray
+        case "Pure Origin":
+            currentPickerCategory = pureOriginArray
+        case "Lungo":
+            currentPickerCategory = lungoArray
+        case "Decaffeinato":
+            currentPickerCategory = decaffeinatoArray
+        case "Variations":
+            currentPickerCategory = variationsArray
+        default:
+            break
+        }
+        
+        showImagesForCurrentPickerCategory() // Load images/icons based on updated array
+        
+        // MARK: CONTINUE from here!!
     }
     
     // MARK: - Default Overrides

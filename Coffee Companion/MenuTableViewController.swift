@@ -144,9 +144,7 @@ class MenuTableViewController: UITableViewController {
     
     // MARK: -
     
-    // TODO: Test whether boolean values are really changing within core data
     // TODO: Load boolean values for every coffee type when main view appears - this will allow us to prevent showing coffees when they are not required.
-    
     
     
     func checkStatusOfSwitches() {
@@ -161,7 +159,7 @@ class MenuTableViewController: UITableViewController {
         }
     }
     
-    func updateIsIncludedStatusWithinCoreData(switchOutlet switchOutlet: UISwitch) { // TODO: pass in switchOutlet when switch changes...
+    func updateIsIncludedStatusWithinCoreData(switchOutlet switchOutlet: UISwitch) { // Pass in switchOutlet when switch changes
         
         var coffeeName = ""
         var newSwitchStatus = true // Initialiser defaults to true
