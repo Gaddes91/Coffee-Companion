@@ -68,6 +68,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updateArrays() // Populate arrays when app first loads
+        
         // Connect PickerView data
         picker.delegate = self
         picker.dataSource = self
@@ -76,7 +78,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
 //        currentPickerCategory = model.intensoArray
 //        showImagesForCurrentPickerCategory()
         
-        currentPickerCategory = createArrayFromDictionary(model.intensoDict)
+        currentPickerCategory = intensoArray // When app first loads the default category will be "intenso"
         showImagesForCurrentPickerCategory()
     }
     
