@@ -234,27 +234,27 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         switch row {
         case 0:
             print("Intenso!")
-            currentPickerCategory = model.intensoArray // Update currentPickerCategory
+            currentPickerCategory = intensoArray // Update currentPickerCategory
             showImagesForCurrentPickerCategory() // Load images from intensoArray
         case 1:
             print("Espresso!")
-            currentPickerCategory = model.espressoArray
+            currentPickerCategory = espressoArray
             showImagesForCurrentPickerCategory()
         case 2:
             print("Pure Origin!")
-            currentPickerCategory = model.pureOriginArray
+            currentPickerCategory = pureOriginArray
             showImagesForCurrentPickerCategory()
         case 3:
             print("Lungo!")
-            currentPickerCategory = model.lungoArray
+            currentPickerCategory = lungoArray
             showImagesForCurrentPickerCategory()
         case 4:
             print("Decaffeinato!")
-            currentPickerCategory = model.decaffeinatoArray
+            currentPickerCategory = decaffeinatoArray
             showImagesForCurrentPickerCategory()
         case 5:
             print("Variations!")
-            currentPickerCategory = model.variationsArray
+            currentPickerCategory = variationsArray
             showImagesForCurrentPickerCategory()
         default:
             break
