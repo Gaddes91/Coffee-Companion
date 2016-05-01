@@ -22,3 +22,9 @@
  - whenever function is called - the load should be built into the function itself
  - Q1: we will have to load each coffee every time the function is called - will this have a noticeable impact on performance?
  - A1: it shouldn’t have a noticeable impact. This is also a far safer (less error-prone) method of determining whether or not a particular coffee should be included in its respective array. The alternative would be to create a new array so that we could simply use dot syntax to check .isIncluded == true, however we would then have to ensure this new array is kept in sync with core data. To avoid this altogether we will simply check the isIncluded attribute within core data each time the function is called. Also note that the function createArrayFromDictionary() will not be called very often - only when user switches coffee on/off
+
+**Deal with newly-created Arrays**
+ - create variables for each array that will be required (6No in total)
+ - create new func updateArrays()
+ - this function will update the 6No arrays, all at once, when required
+ - this function must be called when app loads (otherwise arrays will be empty!)
