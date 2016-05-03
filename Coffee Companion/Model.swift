@@ -15,6 +15,8 @@ var coffees = [Coffee]()
 
 struct Coffee { // Defines the attributes a coffee must have
     let name: String
+    // TODO: Delete the comment below
+    // This is an optional, because the function loadQuantityFromDataModel uses "if let" to assign the coffee name (this will fail if the current category is empty - when the user deselects all coffees in a particular category)
     let intensity: Int
     let size: String
     let aroma: String

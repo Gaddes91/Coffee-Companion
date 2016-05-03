@@ -24,6 +24,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     @IBOutlet weak var quantityRemaining: UILabel!
     @IBOutlet weak var picker: UIPickerView!
     
+    // Button outlets
+    @IBOutlet weak var addSleeve_OUTLET: UIButton!
+    @IBOutlet weak var removePod_OUTLET: UIButton!
+    
+    // Define default colours (used to reset background colour for each button)
+    let addSleeveDefaultColour = UIColor(red: 0.4, green: 1, blue: 0.4, alpha: 0.852275)
+    let removePodDefaultColour = UIColor(red: 1, green: 0.4, blue: 0.4, alpha: 1)
+    
     // Create arrays - these will be updated through the function updateArrays()
     var intensoArray = [Coffee]()
     var espressoArray = [Coffee]()
@@ -70,6 +78,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         super.viewDidLoad()
         
         updateArrays() // Populate arrays when app first loads
+        enableButtonsAndResetColour() // Ensure buttons are enabled when app first loads
         
         // Connect PickerView data
         picker.delegate = self
@@ -193,8 +202,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             purgePage(index)
         }
         
-        loadQuantityFromDataModel()
-        updateInfoLabels()
+        if currentPickerCategory.isEmpty {
+            // Do NOT call the following two functions - the category contains no coffees and so, because these functions require access to the array's contents (which do not exist), the app will crash
+        } else {
+            loadQuantityFromDataModel()
+            updateInfoLabels()
+        }
     }
     
     func updateInfoLabels() {
@@ -233,31 +246,37 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         switch row {
         case 0:
             print("Intenso!")
+            enableButtonsAndResetColour()
             currentPickerCategory = intensoArray // Update currentPickerCategory
             currentPickerCategoryName = "Intenso" // Update currentPickerCategoryName
             showImagesForCurrentPickerCategory() // Load images from intensoArray
         case 1:
             print("Espresso!")
+            enableButtonsAndResetColour()
             currentPickerCategory = espressoArray
             currentPickerCategoryName = "Espresso"
             showImagesForCurrentPickerCategory()
         case 2:
             print("Pure Origin!")
+            enableButtonsAndResetColour()
             currentPickerCategory = pureOriginArray
             currentPickerCategoryName = "Pure Origin"
             showImagesForCurrentPickerCategory()
         case 3:
             print("Lungo!")
+            enableButtonsAndResetColour()
             currentPickerCategory = lungoArray
             currentPickerCategoryName = "Lungo"
             showImagesForCurrentPickerCategory()
         case 4:
             print("Decaffeinato!")
+            enableButtonsAndResetColour()
             currentPickerCategory = decaffeinatoArray
             currentPickerCategoryName = "Decaffeinato"
             showImagesForCurrentPickerCategory()
         case 5:
             print("Variations!")
+            enableButtonsAndResetColour()
             currentPickerCategory = variationsArray
             currentPickerCategoryName = "Variations"
             showImagesForCurrentPickerCategory()
@@ -316,7 +335,31 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
                 print("Error - Could not fetch \(error), \(error.userInfo)")
             }
         }
+        
+        if outputArray.isEmpty { // Prevent app crash when number of coffees in category = 0
+            
+            // Remove labels
+            nameLabel.text = ""
+            quantityRemaining.text = ""
+            
+            // TODO: delete the following comment
+            // N.B. The quantityRemaining label is updated through the function loadQuantityFromDataModel() and so we do not need to remove the label here
+            
+            // Disable buttons & change background colour
+            addSleeve_OUTLET.enabled = false
+            removePod_OUTLET.enabled = false
+            
+            addSleeve_OUTLET.backgroundColor = UIColor.grayColor()
+            removePod_OUTLET.backgroundColor = UIColor.grayColor()
+            
+            outputArray.append(Coffee(name: "", intensity: 0, size: "", aroma: "", notes: "", icon: UIImage(named: "Empty.png")!, isIncludedSwitchName: "", isIncluded: true, orderingNo: 0))
+        }
+        
         return outputArray
+    }
+    
+    func checkIfCategoryIsEmpty() {
+        
     }
     
     // TODO: call this function when app loads (populate arrays!)
@@ -327,6 +370,15 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         lungoArray = createArrayFromDictionary(model.lungoDict)
         decaffeinatoArray = createArrayFromDictionary(model.decaffeinatoDict)
         variationsArray = createArrayFromDictionary(model.variationsDict)
+    }
+    
+    func enableButtonsAndResetColour() {
+        // Enable buttons & reset background colour
+        addSleeve_OUTLET.enabled = true
+        removePod_OUTLET.enabled = true
+        
+        addSleeve_OUTLET.backgroundColor = addSleeveDefaultColour
+        removePod_OUTLET.backgroundColor = removePodDefaultColour
     }
     
     // MARK: - CoreData
@@ -379,7 +431,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         
         // For the currently-selected coffee type, this function loads the value of "quantity" from Core Data and uses it to update the label on screen (quantityRemaining)
         
-        let coffeeName = currentPickerCategory[currentPage].name
+        let coffeeName = currentPickerCategory[currentPage].name // If coffeeName exists (i.e. check the category is not empty)
         print("LOAD - current coffee name = \(coffeeName)")
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

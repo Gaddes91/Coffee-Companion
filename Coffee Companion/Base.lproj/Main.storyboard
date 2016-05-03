@@ -150,10 +150,12 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="addSleeve_OUTLET" destination="1mj-dW-hNV" id="ErO-MB-tkP"/>
                         <outlet property="nameLabel" destination="5kg-l3-6q2" id="xA2-pC-u5V"/>
                         <outlet property="pageControl" destination="5E3-8f-prD" id="qSk-tr-88H"/>
                         <outlet property="picker" destination="kk4-4U-8ln" id="tXt-A1-UKP"/>
                         <outlet property="quantityRemaining" destination="FGF-Dj-J72" id="aj7-wP-XH2"/>
+                        <outlet property="removePod_OUTLET" destination="51v-hs-pjo" id="KuG-Ev-meW"/>
                         <outlet property="scrollView" destination="a4B-YI-VAM" id="m5f-i0-8w2"/>
                     </connections>
                 </viewController>

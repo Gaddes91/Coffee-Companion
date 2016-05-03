@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B77B4331CD6979A002BC118 /* Empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B77B4321CD6979A002BC118 /* Empty.png */; };
 		4B889E791C4AB2C900587BAA /* Coffee_Companion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B889E771C4AB2C900587BAA /* Coffee_Companion.xcdatamodeld */; };
 		4BB132BB1C314A8A0040C5B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB132BA1C314A8A0040C5B6 /* AppDelegate.swift */; };
 		4BB132BD1C314A8A0040C5B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB132BC1C314A8A0040C5B6 /* ViewController.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B77B4321CD6979A002BC118 /* Empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Empty.png; sourceTree = "<group>"; };
 		4B889E781C4AB2C900587BAA /* Coffee_Companion.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Coffee_Companion.xcdatamodel; sourceTree = "<group>"; };
 		4BB132B71C314A8A0040C5B6 /* Coffee Companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee Companion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BB132BA1C314A8A0040C5B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B77B4311CD66F53002BC118 /* Empty */ = {
+			isa = PBXGroup;
+			children = (
+				4B77B4321CD6979A002BC118 /* Empty.png */,
+			);
+			name = Empty;
+			sourceTree = "<group>";
+		};
 		4BB132AE1C314A8A0040C5B6 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +194,7 @@
 		4BB132EE1C32F0EC0040C5B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4B77B4311CD66F53002BC118 /* Empty */,
 				4BE073591C36F72F00CFDCC9 /* Variations */,
 				4BE073581C36F72700CFDCC9 /* Decaffeinato */,
 				4BE073571C36F71F00CFDCC9 /* Lungo */,
@@ -387,6 +398,7 @@
 				4BE073621C36F78C00CFDCC9 /* Ristretto.png in Resources */,
 				4BE073851C36F7D800CFDCC9 /* Caramelito.png in Resources */,
 				4BE073711C36F7B400CFDCC9 /* Dulsao do Brasil.png in Resources */,
+				4B77B4331CD6979A002BC118 /* Empty.png in Resources */,
 				4BE073811C36F7C800CFDCC9 /* Decaffeinato Volluto.png in Resources */,
 				4BE073781C36F7BE00CFDCC9 /* Linizio Lungo.png in Resources */,
 				4BE0737F1C36F7C800CFDCC9 /* Decaffeinato Intenso.png in Resources */,
