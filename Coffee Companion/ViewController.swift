@@ -336,7 +336,15 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             }
         }
         
-        if outputArray.isEmpty { // Prevent app crash when number of coffees in category = 0
+        // Prevent app crash when number of coffees in category = 0
+        return checkIfArrayIsEmpty(outputArray)
+    }
+    
+    func checkIfArrayIsEmpty(inputArray: [Coffee]) -> [Coffee] { // Return optional coffee type (i.e. the output can be nil)
+        
+        // N.B. If inputArray is NOT empty, the function simply returns this same, unmodified array
+        
+        if inputArray.isEmpty {
             
             // Remove labels
             nameLabel.text = ""
@@ -352,14 +360,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             addSleeve_OUTLET.backgroundColor = UIColor.grayColor()
             removePod_OUTLET.backgroundColor = UIColor.grayColor()
             
-            outputArray.append(Coffee(name: "", intensity: 0, size: "", aroma: "", notes: "", icon: UIImage(named: "Empty.png")!, isIncludedSwitchName: "", isIncluded: true, orderingNo: 0))
+            let outputArray = [Coffee(name: "", intensity: 0, size: "", aroma: "", notes: "", icon: UIImage(named: "Empty.png")!, isIncludedSwitchName: "", isIncluded: true, orderingNo: 0)]
+            
+            return outputArray
+            
+        } else {
+            return inputArray
         }
-        
-        return outputArray
-    }
-    
-    func checkIfCategoryIsEmpty() {
-        
     }
     
     // TODO: call this function when app loads (populate arrays!)
