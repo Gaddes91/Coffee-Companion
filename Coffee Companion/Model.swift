@@ -155,7 +155,7 @@ class Model
 //        populateNamesAndDetails(variationsArray)
     }
     
-    func populateNamesAndDetails(inputArray: [Coffee]) { // MARK: Is this function required??
+    func populateNamesAndDetails(_ inputArray: [Coffee]) { // MARK: Is this function required??
         
         // Populate 2No. arrays
         // One will hold the name of each coffee, in order

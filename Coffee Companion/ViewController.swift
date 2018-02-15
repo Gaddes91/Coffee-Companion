@@ -39,6 +39,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     var lungoArray = [Coffee]()
     var decaffeinatoArray = [Coffee]()
     var variationsArray = [Coffee]()
+    let emptyArray = [Coffee(name: "", intensity: 0, size: "", aroma: "", notes: "", icon: UIImage(named: "Empty.png")!, isIncludedSwitchName: "", isIncluded: true, orderingNo: 0)] // "Empty" array used to check whether or not a particular category is empty
     
     let model = Model()
     
@@ -47,7 +48,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     var currentPickerCategory = [Coffee]() // This is given an initial value in func viewDidLoad()
     var currentPickerCategoryName = "" // This is used during unwind segue to determine the currentPickerCategory (and then reload the appropriate coffees)
     
-    @IBAction func addSleeve(sender: UIButton)
+    @IBAction func addSleeve(_ sender: UIButton)
     {
         if let _ = Int(quantityRemaining.text!) { // Check that quantityRemaining (String) can be expressed as type Int
             saveQuantityAndUpdateLabel(incrementOrDecrement: 10) // Save newly-updated value to CoreData (increase by 10) and update label
@@ -56,7 +57,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         }
     }
     
-    @IBAction func removePod(sender: UIButton)
+    @IBAction func removePod(_ sender: UIButton)
     {
         if let num = Int(quantityRemaining.text!) { // Check that quantityRemaining (String) can be expressed as type Int
             if num > 0 { // This prevents number of pods being a negative number
@@ -78,6 +79,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         super.viewDidLoad()
         
         updateArrays() // Populate arrays when app first loads
+        
+        // TODO: delete this line? It may be required in the case where the category is NO LONGER EMPTY?
         enableButtonsAndResetColour() // Ensure buttons are enabled when app first loads
         
         // Connect PickerView data
@@ -88,6 +91,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         currentPickerCategoryName = "Intenso"
         
         showImagesForCurrentPickerCategory()
+        
+        checkIfArrayIsEmpty(currentPickerCategory) // Check if current category is empty and update buttons and text accordingly
     }
     
     func showImagesForCurrentPickerCategory() {
@@ -115,7 +120,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         
         // 4
         let pagesScrollViewSize = scrollView.frame.size
-        scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * CGFloat(pageImages.count), pagesScrollViewSize.height)
+        scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(pageImages.count), height: pagesScrollViewSize.height)
         
         // 5
         loadVisiblePages()
@@ -128,7 +133,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         scrollView.bounds.origin.x = 0.0 // This resets both the Scroll View and Page Control back to the first page
     }
     
-    func loadPage(page: Int) {
+    func loadPage(_ page: Int) {
         
         if page < 0 || page >= pageImages.count {
             // If it's outside the range of what you have to display, then do nothing
@@ -148,7 +153,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             
             // 3
             let newPageView = UIImageView(image: pageImages[page])
-            newPageView.contentMode = .ScaleAspectFit
+            newPageView.contentMode = .scaleAspectFit
             newPageView.frame = frame
             scrollView.addSubview(newPageView)
             
@@ -157,7 +162,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         }
     }
     
-    func purgePage(page: Int) {
+    func purgePage(_ page: Int) {
         
         if page < 0 || page >= pageImages.count {
             // If it's outside the range of what you have to display, then do nothing
@@ -187,18 +192,24 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         let firstPage = page - 1
         let lastPage = page + 1
         
-        // Purge anything before the first page
-        for var index = 0; index < firstPage; ++index {
+        // Purge anything before the first page - REMOVED '+= 1' 15/02/18 https://stackoverflow.com/questions/40388873/mutating-operator-error-after-changing-to-swift-3-issue-researched-but-cant-s
+        for index in 0 ..< firstPage {
             purgePage(index)
         }
         
+        // Load pages in our range - DEPRECATED 15/02/18
+//        for var index = firstPage; index <= lastPage; index += 1 {
+//            loadPage(index)
+//        }
+        
         // Load pages in our range
-        for var index = firstPage; index <= lastPage; ++index {
+        for var index in firstPage..<lastPage {
             loadPage(index)
+            index += 1
         }
         
-        // Purge anything after the last page
-        for var index = lastPage+1; index < pageImages.count; ++index {
+        // Purge anything after the last page - REMOVED '+= 1' 15/02/18 https://stackoverflow.com/questions/40388873/mutating-operator-error-after-changing-to-swift-3-issue-researched-but-cant-s
+        for index in lastPage+1 ..< pageImages.count {
             purgePage(index)
         }
         
@@ -218,7 +229,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
 //        notesLabel.text = "Notes: \(model.coffeeDetails[currentPage].notes)"
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         loadVisiblePages()
     }
     
@@ -226,22 +237,22 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     var pickerData = ["Intenso", "Espresso", "Pure Origin", "Lungo", "Decaffeinato", "Variations"]
     
     // The number of columns of data
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     // The number of rows of data
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
     
     // The data to return for the row and component (column) that's being passed in
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let string = pickerData[row]
-        return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
+        return NSAttributedString(string: string, attributes: [NSAttributedStringKey.foregroundColor:UIColor.white])
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         switch row {
         case 0:
@@ -250,36 +261,43 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             currentPickerCategory = intensoArray // Update currentPickerCategory
             currentPickerCategoryName = "Intenso" // Update currentPickerCategoryName
             showImagesForCurrentPickerCategory() // Load images from intensoArray
+            print(intensoArray)
+            checkIfArrayIsEmpty(intensoArray) // Check if array is empty
         case 1:
             print("Espresso!")
             enableButtonsAndResetColour()
             currentPickerCategory = espressoArray
             currentPickerCategoryName = "Espresso"
             showImagesForCurrentPickerCategory()
+            checkIfArrayIsEmpty(espressoArray)
         case 2:
             print("Pure Origin!")
             enableButtonsAndResetColour()
             currentPickerCategory = pureOriginArray
             currentPickerCategoryName = "Pure Origin"
             showImagesForCurrentPickerCategory()
+            checkIfArrayIsEmpty(pureOriginArray)
         case 3:
             print("Lungo!")
             enableButtonsAndResetColour()
             currentPickerCategory = lungoArray
             currentPickerCategoryName = "Lungo"
             showImagesForCurrentPickerCategory()
+            checkIfArrayIsEmpty(lungoArray)
         case 4:
             print("Decaffeinato!")
             enableButtonsAndResetColour()
             currentPickerCategory = decaffeinatoArray
             currentPickerCategoryName = "Decaffeinato"
             showImagesForCurrentPickerCategory()
+            checkIfArrayIsEmpty(decaffeinatoArray)
         case 5:
             print("Variations!")
             enableButtonsAndResetColour()
             currentPickerCategory = variationsArray
             currentPickerCategoryName = "Variations"
             showImagesForCurrentPickerCategory()
+            checkIfArrayIsEmpty(variationsArray)
         default:
             break
         }
@@ -287,13 +305,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     
     // MARK: - Create and Update Arrays
     
-    func createArrayFromDictionary(dict: [String : Coffee]) -> [Coffee] { // Used to create an array holding only the coffees for which .isIncluded == true
+    func createArrayFromDictionary(_ dict: [String : Coffee]) -> [Coffee] { // Used to create an array holding only the coffees for which .isIncluded == true
         
         var outputArray = [Coffee]()
         
         // rearrange items in dict to be in alphabetical order of key
         // if we require the items to be sorted in a particular order, we can sort them using the attribute ".orderingNo" - the value associated with this attribute can be changed in the model to define the order of coffees
-        let sortedDict = dict.sort { $0.0 < $1.0 } // see above
+        let sortedDict = dict.sorted { $0.0 < $1.0 } // see above
         
         for item in sortedDict { // loop through items in newly-sorted array
             
@@ -302,24 +320,24 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             
             let coffeeName = item.1.name // MARK: This must exactly match the coffee name within core data
             
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext
             
             // Fetch individual coffee type from CoreData using predicates
-            let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
             request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
             request.predicate = NSPredicate(format: "name = %@", coffeeName) // Create predicate - only fetch the coffee we wish to update
             
             do { // Execute fetch request in a safe way
                 
-                let resultArray = try managedContext.executeFetchRequest(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
+                let resultArray = try managedContext.fetch(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
                 
                 if resultArray.count == 1 { // We only expect a single result
                     
                     let result = resultArray[0] // Assign first (and only) result to constant named result.
                     
                     // Check whether isIncluded == true or false
-                    if let trueOrFalse = result.valueForKey("isIncluded") as! Bool? { // Downcast isIncluded to type Bool
+                    if let trueOrFalse = (result as AnyObject).value(forKey: "isIncluded") as! Bool? { // Downcast isIncluded to type Bool
                         // Mark: downcast - type safety
                         // See above, is there a way to avoid forced downcast? Currently it is necessary because result.valueForKey is returned as type AnyObject
                         if trueOrFalse == true {
@@ -337,36 +355,60 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         }
         
         // Prevent app crash when number of coffees in category = 0
-        return checkIfArrayIsEmpty(outputArray)
+        return checkIfArrayIsEmptyAndReturn(outputArray)
     }
     
-    func checkIfArrayIsEmpty(inputArray: [Coffee]) -> [Coffee] { // Return optional coffee type (i.e. the output can be nil)
+    func checkIfArrayIsEmptyAndReturn(_ inputArray: [Coffee]) -> [Coffee] { // Return coffee type
         
         // N.B. If inputArray is NOT empty, the function simply returns this same, unmodified array
         
         if inputArray.isEmpty {
             
             // Remove labels
-            nameLabel.text = ""
+            nameLabel.text = "Name: N/A"
             quantityRemaining.text = ""
             
             // TODO: delete the following comment
             // N.B. The quantityRemaining label is updated through the function loadQuantityFromDataModel() and so we do not need to remove the label here
             
             // Disable buttons & change background colour
-            addSleeve_OUTLET.enabled = false
-            removePod_OUTLET.enabled = false
+            addSleeve_OUTLET.isEnabled = false
+            removePod_OUTLET.isEnabled = false
             
-            addSleeve_OUTLET.backgroundColor = UIColor.grayColor()
-            removePod_OUTLET.backgroundColor = UIColor.grayColor()
+            addSleeve_OUTLET.backgroundColor = UIColor.gray
+            removePod_OUTLET.backgroundColor = UIColor.gray
             
-            let outputArray = [Coffee(name: "", intensity: 0, size: "", aroma: "", notes: "", icon: UIImage(named: "Empty.png")!, isIncludedSwitchName: "", isIncluded: true, orderingNo: 0)]
+            let outputArray = emptyArray
             
             return outputArray
             
         } else {
             return inputArray
         }
+    }
+    
+    func checkIfArrayIsEmpty(_ inputArray: [Coffee]) { // Same as above, except do not return anything, simply alter the labels and buttons
+        
+        // N.B. If inputArray is NOT empty, the function does not change anything
+        
+        if inputArray[0].icon == emptyArray[0].icon { // TODO: rewrite this boolean check - it is not elegant (or safe)
+            
+            // Remove labels
+            nameLabel.text = "Name: N/A"
+            quantityRemaining.text = ""
+            
+            // TODO: delete the following comment
+            // N.B. The quantityRemaining label is updated through the function loadQuantityFromDataModel() and so we do not need to remove the label here
+            
+            // Disable buttons & change background colour
+            addSleeve_OUTLET.isEnabled = false
+            removePod_OUTLET.isEnabled = false
+            
+            addSleeve_OUTLET.backgroundColor = UIColor.gray
+            removePod_OUTLET.backgroundColor = UIColor.gray
+        }
+        
+        // TODO: write an "else" block to revert the button colours (is this necessary?)
     }
     
     // TODO: call this function when app loads (populate arrays!)
@@ -381,39 +423,39 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     
     func enableButtonsAndResetColour() {
         // Enable buttons & reset background colour
-        addSleeve_OUTLET.enabled = true
-        removePod_OUTLET.enabled = true
+        addSleeve_OUTLET.isEnabled = true
+        removePod_OUTLET.isEnabled = true
         
         addSleeve_OUTLET.backgroundColor = addSleeveDefaultColour
         removePod_OUTLET.backgroundColor = removePodDefaultColour
     }
     
     // MARK: - CoreData
-    func saveQuantityAndUpdateLabel(incrementOrDecrement incrementOrDecrement: Int) { // Save to CoreData
+    func saveQuantityAndUpdateLabel(incrementOrDecrement: Int) { // Save to CoreData
         
         let coffeeName = currentPickerCategory[currentPage].name
         print("SAVE - current coffee name = \(coffeeName)")
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
         // Fetch individual coffee type from CoreData using predicates
-        let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
         request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
         request.predicate = NSPredicate(format: "name = %@", coffeeName) // Create predicate - only fetch the coffee we wish to update
         
         do { // Execute fetch request in a safe way
             
-            let resultArray = try managedContext.executeFetchRequest(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
+            let resultArray = try managedContext.fetch(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
             
             if resultArray.count == 1 { // We only expect a single result
                 
                 let result = resultArray[0] // Assign first (and only) result to constant named result.
                 
                 // Update quantity and save to Core Data, all in one step
-                if let currentQuantity = result.valueForKey("quantity") as! Int? { // Downcast quantity to type Int
+                if let currentQuantity = (result as AnyObject).value(forKey: "quantity") as! Int? { // Downcast quantity to type Int
                     let updatedQuantity = currentQuantity + incrementOrDecrement // Calculate updated quantity by adding or subtracting (as appropriate)
-                    result.setValue(updatedQuantity, forKey: "quantity") // Assign updated quantity to selected coffee in Core Data
+                    (result as AnyObject).setValue(updatedQuantity, forKey: "quantity") // Assign updated quantity to selected coffee in Core Data
                     quantityRemaining.text = "\(updatedQuantity)" // Update label
                 } else {
                     print("Error - 'quantity' is not an Int")
@@ -441,23 +483,23 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         let coffeeName = currentPickerCategory[currentPage].name // If coffeeName exists (i.e. check the category is not empty)
         print("LOAD - current coffee name = \(coffeeName)")
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
         // 1 - Fetch individual coffee type from CoreData (use predicates?)
-        let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
         request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
         request.predicate = NSPredicate(format: "name = %@", coffeeName) // Create predicate - only fetch the coffee we wish to update
         
         do { // Execute fetch request in a safe way
             
-            let resultArray = try managedContext.executeFetchRequest(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
+            let resultArray = try managedContext.fetch(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
             
             if resultArray.count == 1 { // We only expect a single result
                 
                 let result = resultArray[0] // Assign first (and only) result to constant named result.
                 
-                if let quantity = result.valueForKey("quantity") as! Int? { // Downcast quantity to type Int
+                if let quantity = (result as AnyObject).value(forKey: "quantity") as! Int? { // Downcast quantity to type Int
                     quantityRemaining.text = "\(quantity)"
                 }
             } else {
@@ -469,7 +511,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     }
     
     // MARK: - Unwind Segues for MenuTableViewController
-    @IBAction func unwindFromMenu(unwindSegue: UIStoryboardSegue) {
+    @IBAction func unwindFromMenu(_ unwindSegue: UIStoryboardSegue) {
         
         // Reload/refresh currentPickerCategory. This is achieved by using a switch statement to determine the name of the currentPickerCategory, then using this knowledge to assign the appropriate array back to currentPickerCategory. This assignment replaces the old array with the updated array of the same name (effectively reloading/refreshing the coffees). This is necessary because, after the user returns (unwinds) from the menu, it is likely that individual coffees will have been added or removed.
         
@@ -498,7 +540,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
     }
     
     // MARK: - Default Overrides
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     

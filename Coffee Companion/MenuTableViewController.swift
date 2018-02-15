@@ -42,100 +42,100 @@ class MenuTableViewController: UITableViewController {
     @IBOutlet weak var isIncludedVanilio_OUTLET: UISwitch!
     
     // MARK: - isIncluded menu switches ACTIONS
-    @IBAction func isIncludedArpeggio_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedArpeggio_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedArpeggio_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedDharkan_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedDharkan_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedDharkan_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedKazaar_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedKazaar_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedKazaar_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedRistretto_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedRistretto_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedRistretto_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedRoma_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedRoma_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedRoma_OUTLET)
         printIsIncludedSwitchStatus()
     }
     
-    @IBAction func isIncludedCapriccio_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedCapriccio_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedCapriccio_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedCosi_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedCosi_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedCosi_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedLivanto_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedLivanto_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedLivanto_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedVolluto_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedVolluto_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedVolluto_OUTLET)
         printIsIncludedSwitchStatus()
     }
     
-    @IBAction func isIncludedBukeela_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedBukeela_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedBukeela_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedDulsao_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedDulsao_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedDulsao_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedIndriya_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedIndriya_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedIndriya_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedRosabaya_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedRosabaya_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedRosabaya_OUTLET)
         printIsIncludedSwitchStatus()
     }
     
-    @IBAction func isIncludedFortissio_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedFortissio_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedFortissio_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedLinizio_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedLinizio_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedLinizio_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedVivalto_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedVivalto_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedVivalto_OUTLET)
         printIsIncludedSwitchStatus()
     }
     
-    @IBAction func isIncludedDecafArpeggio_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedDecafArpeggio_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedDecafArpeggio_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedDecafIntenso_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedDecafIntenso_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedDecafIntenso_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedDecafVivalto_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedDecafVivalto_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedDecafVivalto_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedDecafVolluto_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedDecafVolluto_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedDecafVolluto_OUTLET)
         printIsIncludedSwitchStatus()
     }
     
-    @IBAction func isIncludedCaramelito_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedCaramelito_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedCaramelito_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedCiocattino_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedCiocattino_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedCiocattino_OUTLET)
         printIsIncludedSwitchStatus()
     }
-    @IBAction func isIncludedVanilio_ACTION(sender: UISwitch) {
+    @IBAction func isIncludedVanilio_ACTION(_ sender: UISwitch) {
         updateIsIncludedStatusWithinCoreData(switchOutlet: isIncludedVanilio_OUTLET)
         printIsIncludedSwitchStatus()
     }
@@ -143,7 +143,7 @@ class MenuTableViewController: UITableViewController {
     // MARK: -
     
     // This func to be used in combination with updateStatusOfAllSwitches()
-    func updateIndividualSwitchStatus(switchOutlet switchOutlet: UISwitch) {
+    @objc func updateIndividualSwitchStatus(switchOutlet: UISwitch) {
         
         var coffeeName = ""
         
@@ -205,24 +205,24 @@ class MenuTableViewController: UITableViewController {
             break
         }
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
         // Fetch individual coffee type from CoreData using predicates
-        let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
         request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
         request.predicate = NSPredicate(format: "name = %@", coffeeName) // Create predicate - only fetch the coffee we wish to update
         
         do { // Execute fetch request in a safe way
             
-            let resultArray = try managedContext.executeFetchRequest(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
+            let resultArray = try managedContext.fetch(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
             
             if resultArray.count == 1 { // We only expect a single result
                 
                 let result = resultArray[0] // Assign first (and only) result to constant named result.
                 
                 // Check the current status of isIncluded in core data
-                if let isIncluded = result.valueForKey("isIncluded") as! Bool? { // Downcast switch status to type Bool
+                if let isIncluded = (result as AnyObject).value(forKey: "isIncluded") as! Bool? { // Downcast switch status to type Bool
                     
                     // TODO: CHECK THIS!
                     // Does the following code change the actual switch itself? Or does it simply change the variable...
@@ -246,7 +246,7 @@ class MenuTableViewController: UITableViewController {
         }
     }
     
-    func updateStatusOfAllSwitches() {
+    @objc func updateStatusOfAllSwitches() {
         
         // 1. link each individual switch to its respective coffee
         // 2. cycle through every coffee, checking within core data whether isIncluded == true
@@ -283,7 +283,7 @@ class MenuTableViewController: UITableViewController {
         updateIndividualSwitchStatus(switchOutlet: isIncludedVanilio_OUTLET)
     }
     
-    func updateIsIncludedStatusWithinCoreData(switchOutlet switchOutlet: UISwitch) { // Pass in switchOutlet when switch changes
+    @objc func updateIsIncludedStatusWithinCoreData(switchOutlet: UISwitch) { // Pass in switchOutlet when switch changes
         
         var coffeeName = ""
         var newSwitchStatus = true // Initialiser defaults to true
@@ -352,32 +352,32 @@ class MenuTableViewController: UITableViewController {
         }
         
         // Assign true/false depending on whether switch is on/off. This will be used to update core data.
-        if switchOutlet.on == true { // If switch is ON
+        if switchOutlet.isOn == true { // If switch is ON
             newSwitchStatus = true
         } else { // If switch is OFF
             newSwitchStatus = false
         }
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
         // Fetch individual coffee type from CoreData using predicates
-        let request = NSFetchRequest(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Coffee") // Ask database to perform a request on the "Coffee" table
         request.returnsObjectsAsFaults = false // Prevent CoreData from returning objects as faults
         request.predicate = NSPredicate(format: "name = %@", coffeeName) // Create predicate - only fetch the coffee we wish to update
         
         do { // Execute fetch request in a safe way
             
-            let resultArray = try managedContext.executeFetchRequest(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
+            let resultArray = try managedContext.fetch(request) // resultArray is used because it is safer to accept results into an array (rather than a single AnyObject), just in case more than one result is returned. This may happen in the case where two coffees with the same name have been erroneously saved to CoreData.
             
             if resultArray.count == 1 { // We only expect a single result
                 
                 let result = resultArray[0] // Assign first (and only) result to constant named result.
                 
                 // Update switch status and save to Core Data, all in one step
-                if let _ = result.valueForKey("isIncluded") as! Bool? { // Downcast switch status to type Bool
+                if let _ = (result as AnyObject).value(forKey: "isIncluded") as! Bool? { // Downcast switch status to type Bool
                 
-                    result.setValue(newSwitchStatus, forKey: "isIncluded") // Assign updated switch status to selected coffee in Core Data
+                    (result as AnyObject).setValue(newSwitchStatus, forKey: "isIncluded") // Assign updated switch status to selected coffee in Core Data
                 } else {
                     print("Error - 'isIncluded' is not a Bool")
                 }
@@ -411,7 +411,7 @@ class MenuTableViewController: UITableViewController {
 //         self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -419,40 +419,40 @@ class MenuTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func editItemsInMenu(sender: UIBarButtonItem) {
+    @IBAction func editItemsInMenu(_ sender: UIBarButtonItem) {
         
     }
     
     // MARK: - Functions for testing/debugging
-    func printIsIncludedSwitchStatus() {
-        print("Arpeggio switch ON = \(isIncludedArpeggio_OUTLET.on)")
-        print("Dharkan switch ON = \(isIncludedDharkan_OUTLET.on)")
-        print("Kazaar switch ON = \(isIncludedKazaar_OUTLET.on)")
-        print("Ristretto switch ON = \(isIncludedRistretto_OUTLET.on)")
-        print("Roma switch ON = \(isIncludedRoma_OUTLET.on)")
+    @objc func printIsIncludedSwitchStatus() {
+        print("Arpeggio switch ON = \(isIncludedArpeggio_OUTLET.isOn)")
+        print("Dharkan switch ON = \(isIncludedDharkan_OUTLET.isOn)")
+        print("Kazaar switch ON = \(isIncludedKazaar_OUTLET.isOn)")
+        print("Ristretto switch ON = \(isIncludedRistretto_OUTLET.isOn)")
+        print("Roma switch ON = \(isIncludedRoma_OUTLET.isOn)")
         
-        print("Capriccio switch ON = \(isIncludedCapriccio_OUTLET.on)")
-        print("Cosi switch ON = \(isIncludedCosi_OUTLET.on)")
-        print("Livanto switch ON = \(isIncludedLivanto_OUTLET.on)")
-        print("Volluto switch ON = \(isIncludedVolluto_OUTLET.on)")
+        print("Capriccio switch ON = \(isIncludedCapriccio_OUTLET.isOn)")
+        print("Cosi switch ON = \(isIncludedCosi_OUTLET.isOn)")
+        print("Livanto switch ON = \(isIncludedLivanto_OUTLET.isOn)")
+        print("Volluto switch ON = \(isIncludedVolluto_OUTLET.isOn)")
         
-        print("Bukeela ka Ethiopia switch ON = \(isIncludedBukeela_OUTLET.on)")
-        print("Dulsao do Brasil switch ON = \(isIncludedDulsao_OUTLET.on)")
-        print("Indriya from India switch ON = \(isIncludedIndriya_OUTLET.on)")
-        print("Rosabaya de Colombia switch ON = \(isIncludedRosabaya_OUTLET.on)")
+        print("Bukeela ka Ethiopia switch ON = \(isIncludedBukeela_OUTLET.isOn)")
+        print("Dulsao do Brasil switch ON = \(isIncludedDulsao_OUTLET.isOn)")
+        print("Indriya from India switch ON = \(isIncludedIndriya_OUTLET.isOn)")
+        print("Rosabaya de Colombia switch ON = \(isIncludedRosabaya_OUTLET.isOn)")
         
-        print("Fortissio Lungo switch ON = \(isIncludedFortissio_OUTLET.on)")
-        print("Linizio Lungo switch ON = \(isIncludedLinizio_OUTLET.on)")
-        print("Vivalto Lungo switch ON = \(isIncludedVivalto_OUTLET.on)")
+        print("Fortissio Lungo switch ON = \(isIncludedFortissio_OUTLET.isOn)")
+        print("Linizio Lungo switch ON = \(isIncludedLinizio_OUTLET.isOn)")
+        print("Vivalto Lungo switch ON = \(isIncludedVivalto_OUTLET.isOn)")
         
-        print("Decaffeinato Arpeggio switch ON = \(isIncludedDecafArpeggio_OUTLET.on)")
-        print("Decaffeinato Intenso switch ON = \(isIncludedDecafIntenso_OUTLET.on)")
-        print("Decaffeinato Vivalto Lungo switch ON = \(isIncludedDecafVivalto_OUTLET.on)")
-        print("Decaffeinato Volluto switch ON = \(isIncludedDecafVolluto_OUTLET.on)")
+        print("Decaffeinato Arpeggio switch ON = \(isIncludedDecafArpeggio_OUTLET.isOn)")
+        print("Decaffeinato Intenso switch ON = \(isIncludedDecafIntenso_OUTLET.isOn)")
+        print("Decaffeinato Vivalto Lungo switch ON = \(isIncludedDecafVivalto_OUTLET.isOn)")
+        print("Decaffeinato Volluto switch ON = \(isIncludedDecafVolluto_OUTLET.isOn)")
         
-        print("Caramelito switch ON = \(isIncludedCaramelito_OUTLET.on)")
-        print("Ciocattino switch ON = \(isIncludedCiocattino_OUTLET.on)")
-        print("Vanilio switch ON = \(isIncludedVanilio_OUTLET.on)")
+        print("Caramelito switch ON = \(isIncludedCaramelito_OUTLET.isOn)")
+        print("Ciocattino switch ON = \(isIncludedCiocattino_OUTLET.isOn)")
+        print("Vanilio switch ON = \(isIncludedVanilio_OUTLET.isOn)")
     }
     
     
