@@ -192,8 +192,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
         let firstPage = page - 1
         let lastPage = page + 1
         
-        // Purge anything before the first page - REMOVED '+= 1' 15/02/18 https://stackoverflow.com/questions/40388873/mutating-operator-error-after-changing-to-swift-3-issue-researched-but-cant-s
-        for index in 0 ..< firstPage {
+        // Purge anything before the first page - CHANGED '+= 1' to '+ 1' 15/02/18 https://stackoverflow.com/questions/40388873/mutating-operator-error-after-changing-to-swift-3-issue-researched-but-cant-s
+        for index in 0 ..< firstPage + 1 {
             purgePage(index)
         }
         
@@ -208,8 +208,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDelega
             index += 1
         }
         
-        // Purge anything after the last page - REMOVED '+= 1' 15/02/18 https://stackoverflow.com/questions/40388873/mutating-operator-error-after-changing-to-swift-3-issue-researched-but-cant-s
-        for index in lastPage+1 ..< pageImages.count {
+        // Purge anything after the last page - CHANGED '+= 1' to '+ 1' 15/02/18 https://stackoverflow.com/questions/40388873/mutating-operator-error-after-changing-to-swift-3-issue-researched-but-cant-s
+        for index in lastPage+1 ..< pageImages.count + 1 {
             purgePage(index)
         }
         
